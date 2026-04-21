@@ -1,0 +1,1167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zarrin Productions — Proposal for Vermont State University</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,900;1,400;1,600&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#1a2632;--navy-mid:#2e3d45;
+  --gold:#b8902a;--gold-l:#d4a843;--gold-pale:#fdf6e8;--gold-border:#e8d49a;
+  --blue:#2B5FEA;--blue-light:#5580f5;--blue-pale:#eef2ff;
+  --cream:#faf9f6;--cream-dark:#f0ebe0;--off:#f5f3ef;
+  --white:#ffffff;--border:#e8e3d8;
+  --text:#1a2632;--muted:#6b7280;--green:#2a7a5a;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);overflow-x:hidden;}
+
+.cover{background:linear-gradient(160deg,#1a2744 0%,#243360 55%,#1e3a5f 100%);min-height:100vh;position:relative;overflow:hidden;display:flex;flex-direction:column;}
+.orb{position:absolute;border-radius:50%;pointer-events:none;}
+.orb1{width:700px;height:700px;top:-200px;right:-100px;background:radial-gradient(circle,rgba(212,168,67,.1) 0%,transparent 65%);}
+.orb2{width:500px;height:500px;bottom:-100px;left:-80px;background:radial-gradient(circle,rgba(43,95,234,.09) 0%,transparent 65%);}
+.orb3{width:320px;height:320px;top:42%;right:22%;background:radial-gradient(circle,rgba(212,168,67,.06) 0%,transparent 65%);}
+
+.cover-top{position:relative;z-index:2;padding:36px 72px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.06);}
+.cover-logo{font-family:'Playfair Display',serif;font-size:20px;font-weight:900;color:var(--white);}
+.cover-logo span{color:var(--gold-l);}
+.cover-doc-pill{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.35);border:1px solid rgba(255,255,255,.1);padding:7px 16px;border-radius:2px;}
+
+.cover-body{position:relative;z-index:2;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:72px;text-align:center;}
+
+.cover-to-block{display:inline-block;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:3px;padding:18px 32px;margin-bottom:52px;}
+.cover-to-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:8px;}
+.cover-to-org{font-size:14px;font-weight:600;color:rgba(255,255,255,.75);line-height:1.55;}
+.cover-to-sub{font-size:12px;color:rgba(255,255,255,.38);margin-top:4px;}
+
+.cover-kicker{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-l);margin-bottom:28px;display:flex;align-items:center;gap:14px;justify-content:center;}
+.cover-kicker::before,.cover-kicker::after{content:'';display:block;width:36px;height:1px;background:var(--gold-l);opacity:.6;}
+
+.cover-h1{font-family:'Playfair Display',serif;font-size:clamp(56px,8vw,108px);font-weight:900;line-height:.94;color:var(--white);margin-bottom:24px;}
+.cover-h1 em{font-style:italic;color:var(--gold-l);}
+.cover-sub{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(17px,2vw,24px);color:rgba(255,255,255,.42);max-width:680px;line-height:1.6;margin:0 auto 64px;}
+
+.cover-stats{display:flex;justify-content:center;gap:0;}
+.cstat{padding:20px 52px;border-right:1px solid rgba(255,255,255,.08);}
+.cstat:last-child{border-right:none;}
+.cstat-n{font-family:'Playfair Display',serif;font-size:48px;font-weight:900;color:var(--gold-l);line-height:1;}
+.cstat-l{font-size:11px;color:rgba(255,255,255,.32);margin-top:6px;text-transform:uppercase;letter-spacing:.07em;}
+
+.cover-bottom{position:relative;z-index:2;padding:22px 72px;border-top:1px solid rgba(255,255,255,.06);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+.cover-meta{font-family:'DM Mono',monospace;font-size:9.5px;color:rgba(255,255,255,.22);letter-spacing:.13em;}
+.cover-contact{font-size:12px;color:rgba(255,255,255,.32);}
+.cover-contact a{color:var(--gold-l);text-decoration:none;}
+
+.gold-bar{height:3px;background:linear-gradient(90deg,var(--gold-l) 0%,var(--gold) 40%,rgba(184,144,42,.08) 85%,transparent 100%);}
+
+.snav{position:sticky;top:0;z-index:100;background:rgba(26,38,50,.97);backdrop-filter:blur(16px);border-bottom:1px solid rgba(212,168,67,.11);display:flex;align-items:center;padding:0 72px;overflow-x:auto;}
+.snav a{font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.36);text-decoration:none;padding:15px 14px;white-space:nowrap;border-bottom:2px solid transparent;transition:color .2s,border-color .2s;}
+.snav a:hover{color:var(--gold-l);border-bottom-color:var(--gold-l);}
+
+.section{padding:96px 72px;}
+.section-alt{padding:96px 72px;background:var(--cream-dark);}
+.section-dark{padding:96px 72px;background:var(--navy);}
+.section-white{padding:96px 72px;background:var(--white);}
+.inner{max-width:1160px;margin:0 auto;}
+
+.eyebrow{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;display:flex;align-items:center;gap:10px;}
+.eyebrow::after{content:'';display:block;width:30px;height:1px;background:var(--gold);opacity:.5;}
+.eyebrow-light{color:var(--gold-l);}
+.eyebrow-light::after{background:var(--gold-l);}
+
+.h2{font-family:'Playfair Display',serif;font-size:clamp(32px,3.8vw,54px);font-weight:900;line-height:1.05;color:var(--navy);margin-bottom:16px;}
+.h2 em{font-style:italic;color:var(--blue);}
+.h2-light{font-family:'Playfair Display',serif;font-size:clamp(32px,3.8vw,54px);font-weight:900;line-height:1.05;color:var(--white);margin-bottom:16px;}
+.h2-light em{font-style:italic;color:var(--gold-l);}
+
+.rule{width:44px;height:2px;background:var(--gold);margin:20px 0 36px;}
+.rule-c{width:44px;height:2px;background:var(--gold);margin:20px auto 36px;}
+
+.lead{font-size:17px;line-height:1.82;color:var(--muted);max-width:820px;}
+
+.rfp-matrix{background:var(--navy);padding:56px 72px;}
+.rfp-inner{max-width:1160px;margin:0 auto;}
+.rfp-head{text-align:center;max-width:680px;margin:0 auto 40px;}
+.rfp-head h3{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--white);margin-bottom:10px;line-height:1.4;}
+.rfp-head h3 em{font-style:italic;color:var(--gold-l);}
+.rfp-head p{font-size:13.5px;color:rgba(255,255,255,.42);line-height:1.7;}
+.rfp-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:2px;}
+.rfp-cell{background:rgba(255,255,255,.04);padding:28px 22px;transition:background .3s;position:relative;overflow:hidden;}
+.rfp-cell:hover{background:rgba(212,168,67,.07);}
+.rfp-cell::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--gold-l);transform:scaleX(0);transform-origin:left;transition:transform .3s;}
+.rfp-cell:hover::after{transform:scaleX(1);}
+.rfp-pct{font-family:'Playfair Display',serif;font-size:40px;font-weight:900;color:var(--gold-l);line-height:1;margin-bottom:10px;}
+.rfp-label{font-size:13px;font-weight:600;color:var(--white);margin-bottom:8px;line-height:1.3;}
+.rfp-desc{font-size:11.5px;color:rgba(255,255,255,.38);line-height:1.6;}
+
+/* ── EMOTIONAL LEAD STATEMENT ── */
+.lean-statement{
+  margin-top:40px;margin-bottom:52px;
+  background:var(--navy);border-radius:3px;
+  padding:44px 72px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;
+}
+.lean-statement::before{content:'';position:absolute;top:0;left:0;bottom:0;width:4px;background:linear-gradient(180deg,var(--gold-l) 0%,var(--blue) 100%);}
+.lean-statement::after{content:'\201C';font-family:'Playfair Display',serif;font-size:200px;font-weight:900;color:rgba(212,168,67,.06);position:absolute;top:-20px;right:32px;line-height:1;pointer-events:none;}
+.lean-text{font-family:'Playfair Display',serif;font-size:clamp(17px,2vw,22px);font-weight:400;font-style:italic;color:rgba(255,255,255,.75);line-height:1.75;max-width:860px;margin:0 auto;text-align:center;position:relative;z-index:2;}
+.lean-text em{font-style:normal;color:var(--gold-l);font-weight:600;}
+
+/* ── RELIABILITY STRIP ── */
+.reliability-strip{display:flex;gap:0;margin-top:52px;border:1px solid var(--border);border-radius:3px;overflow:hidden;}
+.rl-item{flex:1;padding:22px 24px;display:flex;align-items:flex-start;gap:14px;border-right:1px solid var(--border);}
+.rl-item:last-child{border-right:none;}
+.rl-icon{font-size:20px;flex-shrink:0;margin-top:2px;}
+.rl-label{font-size:11px;font-weight:700;color:var(--navy);margin-bottom:4px;text-transform:uppercase;letter-spacing:.06em;}
+.rl-body{font-size:12.5px;color:var(--muted);line-height:1.55;}
+
+.exec-split{display:grid;grid-template-columns:1.15fr 1fr;gap:72px;align-items:start;margin-top:52px;}
+.callout{border-left:3px solid var(--blue);padding:22px 26px;background:var(--blue-pale);margin-bottom:26px;}
+.callout.gold-c{border-color:var(--gold);background:var(--gold-pale);}
+.callout p{font-size:14.5px;line-height:1.8;color:var(--navy);}
+.callout p strong{font-weight:600;}
+
+.founder-card{background:var(--navy);border-radius:3px;padding:44px 40px;position:relative;overflow:hidden;}
+.founder-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold-l),var(--blue));}
+.fc-pill{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-l);margin-bottom:10px;}
+.fc-name{font-family:'Playfair Display',serif;font-size:28px;font-weight:900;color:var(--white);margin-bottom:5px;}
+.fc-role{font-size:12px;color:rgba(255,255,255,.3);margin-bottom:24px;}
+.fc-bio{font-size:13.5px;line-height:1.82;color:rgba(255,255,255,.55);margin-bottom:28px;}
+.creds{list-style:none;display:flex;flex-direction:column;gap:14px;}
+.cred{display:flex;gap:12px;font-size:13px;line-height:1.6;color:rgba(255,255,255,.58);}
+.cred-tick{width:20px;height:20px;background:rgba(212,168,67,.15);border:1px solid rgba(212,168,67,.3);border-radius:2px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;font-size:9px;color:var(--gold-l);}
+.cred strong{color:rgba(255,255,255,.8);}
+
+.cap-wrap{background:var(--navy);}
+.cap-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;}
+.cap-cell{padding:48px 36px;border-right:1px solid rgba(255,255,255,.05);text-align:center;}
+.cap-cell:last-child{border-right:none;}
+.cap-n{font-family:'Playfair Display',serif;font-size:60px;font-weight:900;color:var(--gold-l);line-height:1;margin-bottom:8px;}
+.cap-l{font-size:13px;color:rgba(255,255,255,.42);line-height:1.5;}
+.cap-footer{padding:36px 72px;border-top:1px solid rgba(255,255,255,.05);text-align:center;}
+.cap-footer p{font-size:15px;line-height:1.8;color:rgba(255,255,255,.42);max-width:760px;margin:0 auto;}
+.cap-footer p strong{color:rgba(255,255,255,.75);}
+
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.06);margin-top:48px;}
+.svc{background:rgba(255,255,255,.04);padding:38px 32px;position:relative;overflow:hidden;transition:background .2s;}
+.svc:hover{background:rgba(212,168,67,.07);}
+.svc::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--gold-l);transform:scaleX(0);transform-origin:left;transition:transform .3s;}
+.svc:hover::after{transform:scaleX(1);}
+.svc-n{font-family:'DM Mono',monospace;font-size:9.5px;color:var(--gold-l);opacity:.6;margin-bottom:14px;}
+.svc-icon{font-size:26px;margin-bottom:12px;display:block;}
+.svc-title{font-family:'Playfair Display',serif;font-size:19px;font-weight:700;color:var(--white);margin-bottom:10px;line-height:1.25;}
+.svc-desc{font-size:13px;line-height:1.78;color:rgba(255,255,255,.5);margin-bottom:16px;}
+.stag{font-size:10px;font-weight:600;padding:3px 9px;border-radius:2px;letter-spacing:.03em;margin-right:4px;margin-bottom:4px;display:inline-block;}
+.stag-b{background:rgba(43,95,234,.25);color:#a0b8ff;}
+.stag-g{background:rgba(212,168,67,.15);color:var(--gold-l);border:1px solid rgba(212,168,67,.2);}
+.stag-n{background:rgba(255,255,255,.07);color:rgba(255,255,255,.5);}
+
+.scope-intro{text-align:center;max-width:700px;margin:0 auto 48px;}
+.scope-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;}
+.scope-item{background:rgba(255,255,255,.04);padding:30px 28px;display:flex;gap:18px;align-items:flex-start;transition:background .25s;}
+.scope-item:hover{background:rgba(212,168,67,.06);}
+.sc-icon{width:28px;height:28px;background:rgba(212,168,67,.15);border:1px solid rgba(212,168,67,.3);border-radius:2px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;}
+.sc-icon svg{width:13px;height:13px;stroke:var(--gold-l);stroke-width:2.5;fill:none;}
+.sc-title{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:var(--white);margin-bottom:7px;line-height:1.25;}
+.sc-body{font-size:12.5px;line-height:1.72;color:rgba(255,255,255,.42);}
+
+.edu-cols{display:grid;grid-template-columns:1fr 1.05fr;gap:72px;align-items:stretch;margin-top:52px;}
+.edu-dark{background:var(--navy);border-radius:3px;padding:48px 44px;position:relative;overflow:hidden;display:flex;flex-direction:column;}
+.edu-dark::after{content:'';position:absolute;bottom:-60px;right:-60px;width:240px;height:240px;background:var(--blue);opacity:.05;border-radius:50%;}
+.edu-num{font-family:'Playfair Display',serif;font-size:96px;font-weight:900;color:var(--gold-l);line-height:1;}
+.edu-cap{font-family:'Playfair Display',serif;font-style:italic;font-size:17px;color:rgba(255,255,255,.52);line-height:1.45;margin-bottom:32px;}
+.edu-bullets{list-style:none;display:flex;flex-direction:column;gap:14px;}
+.edu-li{display:flex;gap:12px;font-size:13px;line-height:1.65;color:rgba(255,255,255,.55);}
+.edu-dot{width:5px;height:5px;background:var(--gold-l);border-radius:50%;flex-shrink:0;margin-top:6px;}
+.edu-li strong{color:rgba(255,255,255,.8);}
+.edu-right{display:flex;flex-direction:column;gap:18px;}
+.edu-pt{padding:22px 26px;background:var(--white);border-radius:2px;border-left:3px solid var(--blue);}
+.edu-pt:nth-child(2){border-color:var(--gold);}
+.edu-pt:nth-child(3){border-color:var(--navy-mid);}
+.edu-pt:nth-child(4){border-color:var(--blue-light);}
+.edu-pt-t{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:var(--navy);margin-bottom:7px;}
+.edu-pt-b{font-size:13px;line-height:1.72;color:var(--muted);}
+
+.diff-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:48px;}
+.diff-item{padding:32px 28px;background:var(--white);border:1px solid var(--border);border-radius:2px;position:relative;overflow:hidden;transition:border-color .2s,box-shadow .2s;}
+.diff-item::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;}
+.diff-item:nth-child(1)::before,.diff-item:nth-child(4)::before{background:var(--blue);}
+.diff-item:nth-child(2)::before,.diff-item:nth-child(5)::before{background:var(--gold-l);}
+.diff-item:nth-child(3)::before,.diff-item:nth-child(6)::before{background:var(--navy-mid);}
+.diff-item:hover{border-color:var(--gold-border);box-shadow:0 8px 32px rgba(184,144,42,.09);}
+.diff-n{font-family:'Playfair Display',serif;font-size:44px;font-weight:900;color:var(--cream-dark);line-height:1;margin-bottom:12px;}
+.diff-title{font-family:'Playfair Display',serif;font-size:17px;font-weight:700;color:var(--navy);margin-bottom:8px;}
+.diff-body{font-size:13px;line-height:1.78;color:var(--muted);}
+
+.wf-steps{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin-top:52px;position:relative;}
+.wf-steps::before{content:'';position:absolute;top:34px;left:10%;right:10%;height:1px;background:rgba(212,168,67,.2);z-index:0;}
+.wf-step{position:relative;z-index:1;text-align:center;padding:0 14px;}
+.wf-c{width:68px;height:68px;border-radius:50%;background:var(--navy);border:1.5px solid rgba(212,168,67,.2);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;transition:border-color .3s;}
+.wf-step:hover .wf-c{border-color:var(--gold-l);}
+.wf-num{font-family:'Playfair Display',serif;font-size:22px;font-weight:900;color:var(--gold-l);}
+.wf-name{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:var(--navy);margin-bottom:8px;}
+.wf-body{font-size:12.5px;line-height:1.65;color:var(--muted);}
+
+/* ── ECOSYSTEM ── */
+.eco-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:40px;}
+.eco-item{background:rgba(255,255,255,.04);padding:28px 28px;display:flex;gap:16px;align-items:flex-start;transition:background .25s;}
+.eco-item:hover{background:rgba(212,168,67,.07);}
+.eco-num{font-family:'Playfair Display',serif;font-size:36px;font-weight:900;color:var(--gold-l);opacity:.35;line-height:1;flex-shrink:0;width:36px;}
+.eco-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:var(--white);margin-bottom:7px;}
+.eco-body{font-size:12.5px;line-height:1.72;color:rgba(255,255,255,.44);}
+
+/* ── WHY UNIVERSITIES ── */
+.wu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px;}
+.wu-item{background:var(--navy);border-radius:3px;padding:36px 32px;position:relative;overflow:hidden;transition:transform .3s,box-shadow .3s;}
+.wu-item:hover{transform:translateY(-4px);box-shadow:0 16px 52px rgba(26,39,68,.14);}
+.wu-item::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;}
+.wu-item:nth-child(1)::before{background:var(--gold-l);}
+.wu-item:nth-child(2)::before{background:var(--blue);}
+.wu-item:nth-child(3)::before{background:var(--navy-mid);}
+.wu-n{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-l);opacity:.6;margin-bottom:14px;}
+.wu-title{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--white);margin-bottom:10px;line-height:1.2;}
+.wu-body{font-size:13px;line-height:1.78;color:rgba(255,255,255,.5);}
+.wu-landscape{background:var(--gold-pale);border:1px solid var(--gold-border);border-radius:3px;padding:28px 36px;margin-top:40px;}
+.wu-landscape p{font-size:14.5px;line-height:1.82;color:#7a5e00;}
+.wu-landscape p strong{color:var(--navy);}
+
+/* ── 90-DAY ROADMAP ── */
+.roadmap-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:48px;}
+.rm-month{background:var(--white);border:1px solid var(--border);overflow:hidden;transition:box-shadow .2s;display:flex;flex-direction:column;}
+.rm-month:hover{box-shadow:0 8px 32px rgba(26,39,68,.09);}
+.rm-head{padding:24px 28px;border-bottom:1px solid var(--border);position:relative;}
+.rm-month:nth-child(1) .rm-head{background:linear-gradient(135deg,#1a2744 0%,#243360 100%);}
+.rm-month:nth-child(2) .rm-head{background:linear-gradient(135deg,#1e3a5f 0%,#2a4f7c 100%);}
+.rm-month:nth-child(3) .rm-head{background:linear-gradient(135deg,#12213a 0%,#1a2f55 100%);}
+.rm-month-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:8px;}
+.rm-month-title{font-family:'Playfair Display',serif;font-size:22px;font-weight:900;color:var(--white);line-height:1.1;margin-bottom:6px;}
+.rm-month-sub{font-size:12px;color:rgba(255,255,255,.4);line-height:1.5;}
+.rm-body{padding:24px 28px;flex:1;display:flex;flex-direction:column;}
+.rm-items{list-style:none;display:flex;flex-direction:column;gap:12px;flex:1;}
+.rm-item{display:flex;gap:12px;align-items:flex-start;font-size:13px;line-height:1.6;color:var(--muted);}
+.rm-dot{width:6px;height:6px;border-radius:50%;background:var(--gold);flex-shrink:0;margin-top:5px;}
+.rm-item strong{color:var(--navy);display:block;font-size:12.5px;font-weight:600;margin-bottom:2px;}
+.rm-note{margin-top:auto;padding-top:20px;padding:14px 16px;background:var(--off);border-radius:2px;font-size:11.5px;color:var(--muted);line-height:1.6;font-style:italic;}
+
+.samples-dark{background:var(--navy);padding:96px 72px;}
+.samples-intro{text-align:center;max-width:640px;margin:0 auto 48px;}
+.samples-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:1160px;margin:0 auto;}
+.sample-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:3px;overflow:hidden;transition:border-color .3s;}
+.sample-card:hover{border-color:rgba(212,168,67,.3);}
+.sample-video{width:100%;aspect-ratio:16/9;border:none;display:block;background:#000;}
+.sample-meta{padding:18px 22px;}
+.sample-type{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-l);margin-bottom:6px;}
+.sample-title{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:var(--white);margin-bottom:6px;}
+.sample-desc{font-size:12.5px;color:rgba(255,255,255,.42);line-height:1.6;}
+.samples-cta-wrap{text-align:center;margin-top:36px;}
+.samples-cta-wrap a{display:inline-flex;align-items:center;gap:10px;background:rgba(212,168,67,.12);border:1px solid rgba(212,168,67,.3);color:var(--gold-l);padding:13px 32px;border-radius:2px;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;transition:background .2s;}
+.samples-cta-wrap a:hover{background:rgba(212,168,67,.2);}
+
+.pkgs{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:20px;}
+.pkg{border-radius:3px;overflow:hidden;border:1px solid var(--border);background:var(--white);display:flex;flex-direction:column;transition:transform .3s,box-shadow .3s;}
+.pkg:hover{transform:translateY(-4px);box-shadow:0 16px 52px rgba(26,39,68,.11);}
+.pkg.feat{border-color:var(--gold-border);box-shadow:0 6px 36px rgba(184,144,42,.16);}
+.pkg-head{padding:36px 30px 28px;position:relative;overflow:hidden;}
+.h-t1{background:linear-gradient(145deg,#1a2744 0%,#243360 100%);}
+.h-t2{background:linear-gradient(145deg,#1e3a5f 0%,#2a4f7c 100%);}
+.h-t3{background:linear-gradient(145deg,#12213a 0%,#1a2f55 100%);}
+.pkg-head::before{content:'';position:absolute;top:-50px;right:-50px;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,rgba(212,168,67,.12) 0%,transparent 65%);}
+.feat-badge{position:absolute;top:12px;right:12px;background:linear-gradient(135deg,var(--gold) 0%,var(--gold-l) 100%);color:var(--navy);font-size:8.5px;font-weight:900;letter-spacing:1.5px;text-transform:uppercase;padding:4px 12px;border-radius:2px;}
+.pkg-tier{font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.38);margin-bottom:8px;}
+.pkg-name{font-family:'Playfair Display',serif;font-size:26px;font-weight:900;color:var(--white);margin-bottom:6px;}
+.pkg-line{font-size:12.5px;color:rgba(255,255,255,.42);margin-bottom:24px;line-height:1.55;}
+.pkg-price-row{display:flex;align-items:baseline;gap:3px;}
+.pkg-cur{font-size:18px;font-weight:600;color:var(--gold-l);margin-top:4px;}
+.pkg-price{font-family:'Playfair Display',serif;font-size:48px;font-weight:900;color:var(--white);line-height:1;}
+.pkg-per{font-size:12px;color:rgba(255,255,255,.32);margin-left:3px;}
+.pkg-body{padding:28px 30px 32px;flex:1;display:flex;flex-direction:column;}
+.pkg-st{font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:11px;margin-top:22px;padding-bottom:7px;border-bottom:1px solid var(--border);}
+.pkg-st:first-child{margin-top:0;}
+.pkg-items{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.pi{display:flex;gap:9px;align-items:flex-start;font-size:13px;color:var(--text);line-height:1.5;}
+.pi::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--gold);flex-shrink:0;margin-top:5px;}
+.pi.bold{font-weight:600;color:var(--navy);}
+.pi.note{color:var(--muted);font-style:italic;}
+.pkg-note{margin-top:auto;padding-top:18px;font-size:11.5px;color:var(--muted);font-style:italic;border-top:1px solid var(--border);line-height:1.6;}
+.scale-bar{background:var(--gold-pale);border:1px solid var(--gold-border);border-radius:2px;padding:12px 16px;margin-bottom:16px;font-size:12.5px;color:#7a5e00;line-height:1.6;font-weight:500;text-align:center;}
+
+.empire{border:2px solid var(--gold-border);border-radius:3px;background:var(--white);overflow:hidden;box-shadow:0 12px 52px rgba(184,144,42,.14);margin-bottom:48px;}
+.empire-head{background:linear-gradient(120deg,#0d0f12 0%,#1a1f30 40%,#0f1a2e 100%);padding:52px 60px;position:relative;overflow:hidden;display:grid;grid-template-columns:1fr auto;gap:40px;align-items:start;}
+.empire-head::before{content:'';position:absolute;top:-80px;right:-50px;width:440px;height:440px;border-radius:50%;background:radial-gradient(circle,rgba(212,168,67,.09) 0%,transparent 55%);}
+.emp-left{position:relative;z-index:2;}
+.emp-badge{display:inline-block;background:linear-gradient(135deg,var(--gold) 0%,var(--gold-l) 100%);color:#0d0f12;font-size:9px;font-weight:900;letter-spacing:2px;text-transform:uppercase;padding:5px 14px;border-radius:2px;margin-bottom:16px;}
+.emp-name{font-family:'Playfair Display',serif;font-size:clamp(34px,4vw,48px);font-weight:900;color:var(--white);line-height:1;margin-bottom:10px;}
+.emp-name em{font-style:italic;color:var(--gold-l);}
+.emp-tagline{font-size:14px;color:rgba(255,255,255,.46);max-width:520px;line-height:1.78;}
+.emp-right{position:relative;z-index:2;text-align:right;flex-shrink:0;}
+.emp-pl{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-l);margin-bottom:6px;}
+.emp-price{font-family:'Playfair Display',serif;font-size:64px;font-weight:900;color:var(--white);line-height:1;}
+.emp-period{font-size:12px;color:rgba(255,255,255,.28);display:block;text-align:right;margin-top:4px;}
+.empire-body{padding:44px 60px;}
+.emp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:36px;}
+.emp-ct{font-size:9px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);padding-bottom:10px;margin-bottom:14px;border-bottom:2px solid var(--gold-border);}
+.emp-items{list-style:none;display:flex;flex-direction:column;gap:7px;}
+.ei{display:flex;gap:9px;align-items:flex-start;font-size:12px;color:var(--text);line-height:1.5;}
+.ei::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--gold);flex-shrink:0;margin-top:5px;}
+.ei.bold{font-weight:600;color:var(--navy);}
+.ei.note{color:var(--muted);font-style:italic;}
+
+.pt{width:100%;border-collapse:collapse;margin-top:40px;font-size:13.5px;}
+.pt th{text-align:left;padding:13px 18px;background:var(--navy);color:var(--gold-l);font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.16em;text-transform:uppercase;font-weight:400;}
+.pt td{padding:15px 18px;border-bottom:1px solid var(--border);color:var(--muted);vertical-align:top;line-height:1.6;}
+.pt tr:hover td{background:rgba(212,168,67,.03);}
+.pt td:first-child{font-weight:600;color:var(--navy);}
+.pt td:last-child{font-family:'DM Mono',monospace;font-size:12.5px;color:var(--navy);font-weight:700;white-space:nowrap;}
+.bdg{display:inline-block;padding:3px 8px;border-radius:2px;font-size:10px;font-weight:600;letter-spacing:.04em;}
+.bdg-g{background:rgba(42,122,90,.1);color:var(--green);}
+.bdg-b{background:var(--blue-pale);color:var(--blue);}
+.bdg-gold{background:var(--gold-pale);color:#7a5e00;border:1px solid var(--gold-border);}
+.bdg-t3{background:rgba(26,39,68,.08);color:var(--navy);}
+
+.always-box{background:var(--white);border:1px solid var(--border);border-radius:3px;padding:52px;position:relative;overflow:hidden;}
+.always-box::before{content:'';position:absolute;top:-40px;right:-40px;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,var(--gold-pale) 0%,transparent 65%);pointer-events:none;}
+.always-title{font-family:'Playfair Display',serif;font-size:24px;font-weight:900;color:var(--navy);margin-bottom:28px;}
+.always-title em{font-style:italic;color:var(--blue);}
+.always-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.ai{background:var(--off);border:1px solid var(--border);border-radius:2px;padding:20px;transition:border-color .2s,background .2s;}
+.ai:hover{background:var(--gold-pale);border-color:var(--gold-border);}
+.ai-icon{font-size:22px;margin-bottom:9px;}
+.ai strong{display:block;font-size:13px;font-weight:700;color:var(--navy);margin-bottom:4px;}
+.ai span{font-size:12px;color:var(--muted);line-height:1.55;}
+
+/* ── COMPETITIVE POSITIONING ── */
+.comp-table{width:100%;border-collapse:collapse;margin-top:48px;}
+.comp-table th{text-align:left;padding:12px 18px;background:var(--navy);color:var(--gold-l);font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.16em;text-transform:uppercase;font-weight:400;}
+.comp-table td{padding:14px 18px;border-bottom:1px solid var(--border);font-size:13px;vertical-align:top;line-height:1.55;}
+.comp-table tr:last-child td{border-bottom:none;}
+.comp-table td:first-child{font-weight:600;color:var(--navy);width:22%;}
+.comp-table td:nth-child(2){color:var(--muted);width:24%;}
+.comp-table td:nth-child(3){color:#a33b3b;font-size:12px;width:24%;}
+.comp-table td:last-child{color:var(--green);font-size:12px;font-weight:500;width:30%;}
+.comp-table tr:hover td{background:rgba(212,168,67,.03);}
+.comp-highlight{background:var(--gold-pale)!important;}
+.comp-highlight td{background:var(--gold-pale)!important;border-color:var(--gold-border)!important;}
+.comp-zarrin-label{display:inline-flex;align-items:center;gap:6px;font-family:'DM Mono',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;background:var(--gold);color:var(--navy);padding:3px 8px;border-radius:2px;font-weight:700;}
+
+/* ── OUTCOME STATEMENT ── */
+.outcome-bar{background:var(--navy);border-radius:3px;padding:32px 44px;margin-top:52px;display:flex;align-items:center;gap:32px;}
+.ob-divider{width:1px;height:60px;background:rgba(212,168,67,.2);flex-shrink:0;}
+.ob-left{flex-shrink:0;}
+.ob-icon{font-size:36px;}
+.ob-right{}
+.ob-title{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--white);margin-bottom:7px;}
+.ob-body{font-size:13px;line-height:1.72;color:rgba(255,255,255,.48);}
+
+.cta-wrap{background:linear-gradient(145deg,var(--navy) 0%,#243360 100%);border-radius:3px;padding:64px;text-align:center;position:relative;overflow:hidden;}
+.cta-wrap::before{content:'';position:absolute;top:-80px;right:-80px;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle,rgba(212,168,67,.09) 0%,transparent 65%);pointer-events:none;}
+.cta-h{font-family:'Playfair Display',serif;font-size:clamp(26px,3.2vw,40px);font-weight:900;color:var(--white);margin-bottom:14px;}
+.cta-h em{font-style:italic;color:var(--gold-l);}
+.cta-p{font-size:15px;color:rgba(255,255,255,.48);max-width:520px;margin:0 auto 36px;line-height:1.82;}
+.btn-gold{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,var(--gold) 0%,var(--gold-l) 100%);color:var(--navy);padding:16px 46px;border-radius:3px;font-size:13px;font-weight:700;letter-spacing:.04em;text-decoration:none;box-shadow:0 6px 28px rgba(184,144,42,.4);transition:box-shadow .2s,transform .2s;}
+.btn-gold:hover{box-shadow:0 10px 40px rgba(184,144,42,.55);transform:translateY(-2px);}
+
+.footer{background:var(--navy);padding:48px 72px;border-top:1px solid rgba(212,168,67,.1);display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:32px;}
+.f-logo{font-family:'Playfair Display',serif;font-size:26px;font-weight:900;color:var(--white);}
+.f-logo span{color:var(--gold-l);}
+.f-tag{font-family:'Playfair Display',serif;font-style:italic;font-size:13px;color:rgba(255,255,255,.24);margin-top:5px;}
+.f-info p{font-size:12px;color:rgba(255,255,255,.35);margin-bottom:4px;}
+.f-info a{color:var(--gold-l);text-decoration:none;font-size:12px;}
+.f-meta{font-family:'DM Mono',monospace;font-size:9px;color:rgba(255,255,255,.18);letter-spacing:.12em;text-transform:uppercase;margin-top:8px;}
+
+@media(max-width:960px){
+  .cover-body,.cover-top,.cover-bottom,.section,.section-alt,.section-dark,.section-white,.rfp-matrix,.samples-dark,.footer{padding-left:36px;padding-right:36px;}
+  .snav{padding:0 36px;}
+  .cover-stats{flex-wrap:wrap;justify-content:center;}
+  .cstat{padding:16px 28px;}
+  .exec-split,.edu-cols{grid-template-columns:1fr;gap:40px;}
+  .svc-grid,.diff-grid,.pkgs{grid-template-columns:1fr 1fr;}
+  .cap-grid{grid-template-columns:1fr 1fr;}
+  .rfp-grid{grid-template-columns:1fr 1fr 1fr;}
+  .scope-grid{grid-template-columns:1fr;}
+  .emp-grid,.always-grid{grid-template-columns:1fr 1fr;}
+  .wf-steps{grid-template-columns:1fr 1fr;gap:28px;}
+  .wf-steps::before{display:none;}
+  .samples-grid{grid-template-columns:1fr;}
+  .empire-head{grid-template-columns:1fr;gap:28px;}
+}
+@media(max-width:600px){
+  .svc-grid,.diff-grid,.pkgs,.rfp-grid,.always-grid,.cap-grid,.emp-grid{grid-template-columns:1fr;}
+  .wf-steps{grid-template-columns:1fr;}
+  .empire-body,.empire-head{padding:36px 28px;}
+}
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<section class="cover">
+  <div class="orb orb1"></div><div class="orb orb2"></div><div class="orb orb3"></div>
+  <div class="cover-top">
+    <div class="cover-logo">Zarrin <span>Productions</span></div>
+    <div class="cover-doc-pill">Strategic Video Production Partner 26–28</div>
+  </div>
+  <div class="cover-body">
+    <div class="cover-to-block">
+      <div class="cover-to-label">Submitted to the Evaluation Committee</div>
+      <div class="cover-to-org">Vermont State University — Vermont State Colleges System<br>Attn: Hannah Reid, Vice President of Communications, Alumni and External Affairs</div>
+      <div class="cover-to-sub">RFP: Strategic Video Production Partner 26–28</div>
+    </div>
+    <div class="cover-kicker">Full Agency Capabilities Statement</div>
+    <h1 class="cover-h1">Where Every Story<br><em>Moves People</em></h1>
+    <p class="cover-sub">A two-year content production partnership to build VTSU's enrollment momentum, unify the brand narrative across six campuses, and deliver video that actually influences decisions.</p>
+    <div class="cover-stats">
+      <div class="cstat"><div class="cstat-n">1,000+</div><div class="cstat-l">Videos Produced</div></div>
+      <div class="cstat"><div class="cstat-n">100+</div><div class="cstat-l">In-House Professionals</div></div>
+      <div class="cstat"><div class="cstat-n">5+</div><div class="cstat-l">Years in Production</div></div>
+      <div class="cstat"><div class="cstat-n">Full</div><div class="cstat-l">Service Agency</div></div>
+    </div>
+  </div>
+  <div class="cover-bottom">
+    <div class="cover-meta">Zarrin Productions &nbsp;&middot;&nbsp; Submitted April 2026 &nbsp;&middot;&nbsp; Document 1 of 3: Full Capabilities Overview</div>
+    <div class="cover-contact">lucy@zarrinproduction.com &nbsp;&middot;&nbsp; <a href="https://calendly.com/lucy-zarrinproduction" target="_blank">Book a Strategy Call &rarr;</a></div>
+  </div>
+</section>
+
+<div class="gold-bar"></div>
+
+<nav class="snav">
+  <a href="#scoring">Scoring</a>
+  <a href="#overview">Overview</a>
+  <a href="#capacity">Capacity</a>
+  <a href="#services">Services</a>
+  <a href="#education">Education</a>
+  <a href="#why">Why Zarrin</a>
+  <a href="#why-universities">Why Institutions Choose Us</a>
+  <a href="#competitive">Competitive Position</a>
+  <a href="#workflow">Workflow</a>
+  <a href="#ninety">First 90 Days</a>
+  <a href="#samples">Work Samples</a>
+  <a href="#packages">Packages</a>
+  <a href="#pricing">Fee Proposal</a>
+</nav>
+
+<!-- SCORING -->
+<section id="scoring" class="rfp-matrix">
+  <div class="rfp-inner">
+    <div class="rfp-head">
+      <h3>Built around what the committee <em>actually scores</em></h3>
+    </div>
+    <div class="rfp-grid">
+      <div class="rfp-cell"><div class="rfp-pct">30%</div><div class="rfp-label">Creative Storytelling</div><div class="rfp-desc">Narrative quality and visual execution. See Services, Education Specialty, and Work Samples.</div></div>
+      <div class="rfp-cell"><div class="rfp-pct">20%</div><div class="rfp-label">Higher-Ed Experience</div><div class="rfp-desc">Universities and mission-driven brands. See Education Specialty and Founder credentials.</div></div>
+      <div class="rfp-cell"><div class="rfp-pct">20%</div><div class="rfp-label">Integrated Campaign Production</div><div class="rfp-desc">Hero + cutdowns + social from one cycle. See Services and Package sections.</div></div>
+      <div class="rfp-cell"><div class="rfp-pct">15%</div><div class="rfp-label">Collaborative Working Style</div><div class="rfp-desc">Embedded partnership with VTSU's internal team. See Workflow section.</div></div>
+      <div class="rfp-cell"><div class="rfp-pct">15%</div><div class="rfp-label">Budget Value and Scalability</div><div class="rfp-desc">Cost-effectiveness within the $100K&ndash;$300K two-year range. See Fee Proposal section.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- OVERVIEW -->
+<section id="overview" class="section">
+  <div class="inner">
+    <p class="eyebrow">Section 2 &mdash; Company Narrative and Executive Summary</p>
+    <h2 class="h2" style="text-align:center;max-width:800px;margin-left:auto;margin-right:auto;">There is a difference between a vendor who makes videos and a partner <em>who shapes how an institution is perceived</em></h2>
+    <div class="rule"></div>
+
+    <div class="lean-statement">
+      <p class="lean-text">The committee reviewing this proposal carries a specific responsibility. Over the next two years, the vendor selected here will shape how tens of thousands of prospective students <em>first encounter Vermont State University</em> — across six campuses, dozens of programs, and every digital channel where enrollment decisions are made. That is not a typical production contract. It is a brand stewardship responsibility. Zarrin Productions is submitting this proposal because the combination of academic background, production capacity, and direct understanding of how higher education communicates makes this precisely the kind of engagement we were built for — and because VTSU's story, at this particular moment in the institution's history, is genuinely worth telling well.</p>
+    </div>
+
+    <div class="exec-split">
+      <div>
+        <p class="lead" style="margin-bottom:28px;">Zarrin Productions is a full-service video production and digital marketing agency with over 1,000 videos produced across education, healthcare, technology, and brand storytelling. More than 100 in-house professionals operate as one cohesive production operation &mdash; creative directors, editors, motion designers, strategists, and digital marketers working together under one strategic roof.</p>
+
+        <div style="background:var(--off);border:1px solid var(--border);border-radius:2px;padding:22px 26px;margin-bottom:28px;border-left:3px solid var(--navy-mid);">
+          <p style="font-size:14px;line-height:1.82;color:var(--navy);">Universities today operate in a most competitive digital enrollment landscape in a generation. Prospective students encounter dozens of institutional messages before making a decision. Programs that cannot communicate their value visually and compellingly lose ground to those that can &mdash; regardless of academic quality. <strong>Strategic video storytelling is no longer a marketing enhancement. For institutions like VTSU, it is a direct enrollment tool.</strong> That is the environment this engagement is designed to address, and it is the environment Zarrin Productions was built to operate in.</p>
+        </div>
+
+        <div class="callout">
+          <p>The case for Zarrin begins where most agencies cannot follow. <strong>The agency&apos;s principal is a former university instructor</strong> with graduate-level credentials in both Digital Marketing and Cybersecurity. This is not a metaphor. It is a direct production advantage. The person responsible for VTSU&apos;s engagement strategy has designed instructional content for academic settings, understands how prospective students evaluate institutions, and has produced content in regulated industries where accuracy and trust are non-negotiable.</p>
+        </div>
+
+      </div>
+
+      <div class="founder-card">
+        <div class="fc-pill">Principal and Strategic Lead</div>
+        <div class="fc-name">Lucy Davis</div>
+        <div class="fc-role">Founder, Zarrin Productions</div>
+        <div class="fc-bio">Lucy built Zarrin Productions at the intersection of digital marketing, instructional design, and video production. She combines formal academic credentials, post-secondary teaching experience, and years of hands-on agency work across regulated, technical, and institutional environments. She leads the strategic direction of every engagement personally.</div>
+        <ul class="creds">
+          <li class="cred"><span class="cred-tick">&#10003;</span><span><strong>B.S., Digital Marketing and E-Commerce</strong> &mdash; The academic foundation for enrollment marketing: consumer behavior, digital campaign architecture, and what actually drives prospective students to act.</span></li>
+          <li class="cred"><span class="cred-tick">&#10003;</span><span><strong>M.S., Cybersecurity</strong> &mdash; Graduate technical credentials enabling fluent work in regulated, compliance-sensitive environments &mdash; without learning the constraints at the client&apos;s expense.</span></li>
+          <li class="cred"><span class="cred-tick">&#10003;</span><span><strong>Former University Instructor</strong> &mdash; Post-secondary classroom experience applied directly to how Zarrin structures, paces, and produces every piece of education and enrollment content.</span></li>
+          <li class="cred"><span class="cred-tick">&#10003;</span><span><strong>Founder &mdash; 100+ Production Professionals</strong> &mdash; A full-capacity agency with the staffing infrastructure to execute a multi-campus, two-year engagement at the volume VTSU&apos;s initiative demands.</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="lead" style="text-align:center;margin:52px auto 0;max-width:840px;">VTSU&apos;s challenge is not routine. This is a two-year mission to build equity in a university formed from three predecessor institutions &mdash; communicating a unified new identity to prospective students who may already carry associations with Castleton, NVU, or VTC. That requires more than production skill. It requires a deep understanding of how institutional narrative is constructed and how enrollment decisions are actually made.</p>
+  </div>
+</section>
+
+<!-- CAPACITY -->
+<section id="capacity" class="cap-wrap">
+  <div style="text-align:center;padding:72px 72px 40px;">
+    <p class="eyebrow" style="justify-content:center;color:var(--gold-l);">Agency Scale and Production Capacity</p>
+    <h2 class="h2-light" style="max-width:640px;margin:0 auto 14px;">The infrastructure to deliver<br><em>at the scope this engagement demands</em></h2>
+    <div class="rule-c"></div>
+  </div>
+  <div class="cap-grid">
+    <div class="cap-cell"><div class="cap-n">1,000+</div><div class="cap-l">Videos produced across education, healthcare, brand storytelling, and performance campaigns</div></div>
+    <div class="cap-cell"><div class="cap-n">100+</div><div class="cap-l">In-house professionals across creative, editorial, motion design, strategy, and digital marketing</div></div>
+    <div class="cap-cell"><div class="cap-n">5+</div><div class="cap-l">Years of active production experience across regulated, academic, and commercial verticals</div></div>
+    <div class="cap-cell"><div class="cap-n">Full</div><div class="cap-l">Service capability: concept, scripting, production, post-production, motion design, strategy, deployment</div></div>
+  </div>
+  <div class="cap-footer">
+    <p><strong>Zarrin is not a boutique studio or a solo practitioner.</strong> It is a full-capacity agency with the staffing, workflow infrastructure, and production management systems to execute a large-scale, multi-format content engagement &mdash; and deliver with consistency across every production cycle for the full two-year partnership.</p>
+  </div>
+  <div style="padding:52px 72px;border-top:1px solid rgba(255,255,255,.05);">
+    <div style="max-width:1160px;margin:0 auto;">
+      <p class="eyebrow eyebrow-light" style="margin-bottom:8px;">Creative Production Ecosystem</p>
+      <h3 style="font-family:'Playfair Display',serif;font-size:clamp(22px,2.5vw,32px);font-weight:900;color:var(--white);margin-bottom:12px;line-height:1.1;">A scalable production model built for<br><em style="color:var(--gold-l);font-style:italic;">sustained, high-volume delivery</em></h3>
+      <p style="font-size:14px;color:rgba(255,255,255,.42);line-height:1.8;max-width:680px;margin-bottom:0;">Zarrin operates through a hybrid model of core in-house creative leadership and a curated network of specialized collaborators. This structure means capacity scales to the project &mdash; not the other way around. There is no delivery ceiling, no bottleneck on a single editor, and no single point of failure in a long-term engagement.</p>
+      <div class="reliability-strip" style="margin-top:36px;border-color:rgba(255,255,255,.08);background:rgba(255,255,255,.03);">
+        <div class="rl-item" style="border-color:rgba(255,255,255,.07);">
+          <span class="rl-icon">&#128203;</span>
+          <div><p class="rl-label" style="color:rgba(255,255,255,.7);">Documented Production Plans</p><p class="rl-body" style="color:rgba(255,255,255,.4);">Every engagement begins with a fully documented pre-production plan, schedule, and approval workflow. VTSU&apos;s team always knows exactly what is in production and when it delivers.</p></div>
+        </div>
+        <div class="rl-item" style="border-color:rgba(255,255,255,.07);">
+          <span class="rl-icon">&#9989;</span>
+          <div><p class="rl-label" style="color:rgba(255,255,255,.7);">Centralized Creative Direction</p><p class="rl-body" style="color:rgba(255,255,255,.4);">Production scales through a curated specialist network, but creative direction remains centralized. Brand consistency is maintained regardless of project volume or delivery complexity.</p></div>
+        </div>
+        <div class="rl-item" style="border-color:rgba(255,255,255,.07);">
+          <span class="rl-icon">&#128257;</span>
+          <div><p class="rl-label" style="color:rgba(255,255,255,.7);">Performance-Feedback Loop</p><p class="rl-body" style="color:rgba(255,255,255,.4);">Deployed content performance feeds back into production planning. Every cycle is informed by what the previous one showed. Year 2 is better because Year 1 data shapes it.</p></div>
+        </div>
+        <div class="rl-item" style="border-color:rgba(255,255,255,.07);">
+          <span class="rl-icon">&#9200;</span>
+          <div><p class="rl-label" style="color:rgba(255,255,255,.7);">Available in One Week</p><p class="rl-body" style="color:rgba(255,255,255,.4);">Zarrin is ready to begin within one week of contract signing. There is no onboarding ramp, no assembly period. The team exists, the workflows are in place, and work can start immediately.</p></div>
+        </div>
+      </div>
+      <div class="eco-grid">
+        <div class="eco-item"><div class="eco-num">01</div><div><p class="eco-title">Strategic and Creative Leadership</p><p class="eco-body">A permanent in-house leadership layer manages strategy, creative direction, and client communication across every engagement. VTSU's relationship is always with the same senior team &mdash; not rotated between different contacts depending on project volume.</p></div></div>
+        <div class="eco-item"><div class="eco-num">02</div><div><p class="eco-title">Editorial and Post-Production Specialists</p><p class="eco-body">Narrative editors, motion graphics designers, colorists, and sound designers working within Zarrin's quality and brand standards. Capacity scales with production volume while creative consistency is maintained through centralized art direction.</p></div></div>
+        <div class="eco-item"><div class="eco-num">03</div><div><p class="eco-title">Animation and Motion Design Capability</p><p class="eco-body">Dedicated animation and motion design specialists for program explainers, brand identity systems, and data-driven visual content. Custom motion work built to VTSU's visual standards &mdash; not purchased from a stock asset library.</p></div></div>
+        <div class="eco-item"><div class="eco-num">04</div><div><p class="eco-title">Digital Marketing and Campaign Strategists</p><p class="eco-body">Paid media managers, social content strategists, and platform specialists embedded within the production operation &mdash; so campaign strategy and content production are aligned from concept to deployment, not handed off between separate teams.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="section-dark">
+  <div class="inner">
+    <p class="eyebrow eyebrow-light">Section 3 &mdash; Scope of Services</p>
+    <h2 class="h2-light">Every deliverable VTSU asked for.<br><em>And then more.</em></h2>
+    <div class="rule"></div>
+
+    <div class="outcome-bar" style="margin-bottom:52px;margin-top:0;">
+      <div class="ob-right" style="width:100%;">
+        <p class="ob-title">The goal is not to produce videos. It is to help Vermont State University communicate its academic value, campus identity, and student experience in a way that moves prospective students toward a decision.</p>
+        <p class="ob-body">Every deliverable in this proposal exists in service of that outcome. When the work is measured at the end of the two-year engagement, the question Zarrin will answer is not how many videos were delivered &mdash; it is whether the content meaningfully supported VTSU&apos;s enrollment and brand objectives.</p>
+      </div>
+    </div>
+    <div class="scope-intro">
+      <p style="font-size:15px;color:rgba(255,255,255,.45);line-height:1.8;">The six scope requirements from the RFP are confirmed below &mdash; followed by the full production capability Zarrin brings, enabling VTSU to scale content far beyond the minimum while remaining within budget.</p>
+    </div>
+
+    <div class="scope-grid" style="margin-bottom:56px;">
+      <div class="scope-item"><span class="sc-icon"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span><div><p class="sc-title">Creative Development and Concepting</p><p class="sc-body">Campaign concepts, visual treatments, narrative frameworks, and messaging architecture developed from the ground up for each VTSU objective &mdash; never templated from previous institutional work.</p></div></div>
+      <div class="scope-item"><span class="sc-icon"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span><div><p class="sc-title">Production Planning and Scheduling</p><p class="sc-body">A fully documented pre-production plan for every engagement cycle: scripts, schedules, contributor coordination, approval workflows, and contingency provisions. VTSU&apos;s team approves everything before a single asset enters production.</p></div></div>
+      <div class="scope-item"><span class="sc-icon"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span><div><p class="sc-title">Multi-Campus Content Coordination</p><p class="sc-body">Zarrin manages all six VTSU campuses through a coordinated remote and hybrid production model. Campus-specific content is developed with local identity in mind, then unified under the broader VTSU brand architecture.</p></div></div>
+      <div class="scope-item"><span class="sc-icon"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span><div><p class="sc-title">Editing, Motion Graphics, and Finishing</p><p class="sc-body">Full post-production in-house: narrative editing, color, sound design, custom motion graphics, animated titles, and finishing. Every motion element is built to VTSU&apos;s brand standards &mdash; not sourced from a template library.</p></div></div>
+      <div class="scope-item"><span class="sc-icon"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span><div><p class="sc-title">Campaign Ads and Social Cutdowns</p><p class="sc-body">Every hero cycle produces a complete platform-ready library: paid ad creatives for Meta and Google, social cutdowns at 15s, 30s, and 60s, and channel-specific versions for Instagram, LinkedIn, TikTok, and YouTube. One production. One complete asset set.</p></div></div>
+      <div class="scope-item"><span class="sc-icon"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span><div><p class="sc-title">Adaptable Content for Multiple Platforms</p><p class="sc-body">Every deliverable is produced in all formats and aspect ratios VTSU&apos;s channels require. 16:9 HD and 4K, 9:16 vertical, 1:1 square, all durations, caption files, and accessibility versions are standard &mdash; never charged as extras.</p></div></div>
+    </div>
+
+    <p class="eyebrow eyebrow-light" style="margin-bottom:16px;">Full Service Capabilities</p>
+    <div class="svc-grid">
+      <div class="svc"><p class="svc-n">01</p><span class="svc-icon">&#129504;</span><p class="svc-title">Brand Storytelling and Institutional Film</p><p class="svc-desc">The kind of video that makes a prospective student stop scrolling, watch the whole thing, and send it to their parents. Hero-level films that communicate the genuine character of VTSU &mdash; not a stock footage montage with narration, but a film that earns its audience.</p><div><span class="stag stag-g">Hero Film</span><span class="stag stag-b">Brand Narrative</span><span class="stag stag-n">Institutional Identity</span></div></div>
+      <div class="svc"><p class="svc-n">02</p><span class="svc-icon">&#128218;</span><p class="svc-title">Enrollment and Program Awareness Video</p><p class="svc-desc">Program-specific videos built for the moment a prospective student is comparing options. Scripted to answer the questions students actually have, not the ones institutions wish they were asking. Trust-building content that earns the enrollment decision.</p><div><span class="stag stag-g">Program Spotlight</span><span class="stag stag-b">Enrollment Campaign</span><span class="stag stag-n">Student Decision</span></div></div>
+      <div class="svc"><p class="svc-n">03</p><span class="svc-icon">&#128226;</span><p class="svc-title">Digital Campaign and Paid Ad Creative</p><p class="svc-desc">Video ad creative for Meta, Google, and YouTube built around what actually stops the scroll. Hook architecture, message sequencing, and call-to-action structure are production disciplines applied from the first line of every script &mdash; not stylistic preferences left to an editor.</p><div><span class="stag stag-b">Meta Ads</span><span class="stag stag-b">Google</span><span class="stag stag-b">YouTube Pre-Roll</span></div></div>
+      <div class="svc"><p class="svc-n">04</p><span class="svc-icon">&#9986;</span><p class="svc-title">Integrated Cutdowns and Social Versions</p><p class="svc-desc">The most efficient content strategy is not producing more assets &mdash; it is extracting maximum value from the ones you have. Every hero production generates a complete suite of platform-specific cutdowns, all brand-consistent and campaign-ready.</p><div><span class="stag stag-n">15s / 30s / 60s</span><span class="stag stag-g">All Aspect Ratios</span><span class="stag stag-b">Multi-Platform</span></div></div>
+      <div class="svc"><p class="svc-n">05</p><span class="svc-icon">&#9854;</span><p class="svc-title">Content Repurposing and Asset Activation</p><p class="svc-desc">VTSU has existing footage, recorded sessions, faculty interviews, and archival material. Zarrin transforms that inventory into deployable campaign content &mdash; extracting social moments and program highlights from footage currently sitting unused.</p><div><span class="stag stag-g">Archive to Social</span><span class="stag stag-b">Event Highlights</span><span class="stag stag-n">Content Library</span></div></div>
+      <div class="svc"><p class="svc-n">06</p><span class="svc-icon">&#127917;</span><p class="svc-title">Motion Graphics and Animated Explainer</p><p class="svc-desc">For program concepts and admissions processes that benefit from visual explanation rather than talking heads. Custom animation built to VTSU&apos;s visual identity &mdash; a format that stands out in feeds dominated by filmed content.</p><div><span class="stag stag-g">Program Explainers</span><span class="stag stag-b">Animated</span><span class="stag stag-n">Brand-Matched</span></div></div>
+      <div class="svc"><p class="svc-n">07</p><span class="svc-icon">&#128241;</span><p class="svc-title">Social Media Video Strategy and Production</p><p class="svc-desc">Platform-native content designed for how VTSU&apos;s audiences engage on Instagram, LinkedIn, TikTok, and YouTube &mdash; not repurposed from longer cuts, but built from the start to perform natively in each environment.</p><div><span class="stag stag-b">Instagram</span><span class="stag stag-b">LinkedIn</span><span class="stag stag-b">TikTok</span><span class="stag stag-b">YouTube</span></div></div>
+      <div class="svc"><p class="svc-n">08</p><span class="svc-icon">&#128483;</span><p class="svc-title">Student and Faculty Story Production</p><p class="svc-desc">The most credible enrollment content comes from people inside the institution. Zarrin edits and produces student-submitted and faculty-contributed footage into polished, campaign-ready assets that carry authentic voice without looking amateur.</p><div><span class="stag stag-g">Student Voice</span><span class="stag stag-n">Faculty Profiles</span><span class="stag stag-b">Alumni Spotlights</span></div></div>
+      <div class="svc"><p class="svc-n">09</p><span class="svc-icon">&#127760;</span><p class="svc-title">Web, Platform, and Distribution Strategy</p><p class="svc-desc">A video only works if it lands in front of the right person at the right moment. Zarrin supports the digital infrastructure around content &mdash; landing pages, campaign deployment, and distribution strategy &mdash; so production and performance are managed as one system.</p><div><span class="stag stag-g">Webflow</span><span class="stag stag-b">Landing Pages</span><span class="stag stag-n">Distribution</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education" class="section-alt">
+  <div class="inner">
+    <p class="eyebrow">Higher Education and Instructional Video &mdash; Direct Credentials</p>
+    <h2 class="h2">Not adapted experience.<br><em>The real thing.</em></h2>
+    <div class="rule"></div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:44px;">
+      <div style="background:var(--white);border:1px solid var(--border);border-radius:2px;padding:24px 22px;border-top:3px solid var(--blue);">
+        <p style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--blue);margin-bottom:8px;">Education Credentials</p>
+        <p style="font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--navy);margin-bottom:8px;line-height:1.2;">Former University Instructor</p>
+        <p style="font-size:12.5px;line-height:1.65;color:var(--muted);">Post-secondary teaching experience directly informs how every education and enrollment video is conceived, scripted, and structured. This is firsthand knowledge, not borrowed theory from watching other universities produce content.</p>
+      </div>
+      <div style="background:var(--white);border:1px solid var(--border);border-radius:2px;padding:24px 22px;border-top:3px solid var(--gold);">
+        <p style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;">Instructional Video Track Record</p>
+        <p style="font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--navy);margin-bottom:8px;line-height:1.2;">1,000+ Videos Produced</p>
+        <p style="font-size:12.5px;line-height:1.65;color:var(--muted);">Corporate training, compliance education, healthcare instructional content, and technology onboarding videos &mdash; all structured around communication objectives, not aesthetics alone. The education sector is not new territory.</p>
+      </div>
+      <div style="background:var(--white);border:1px solid var(--border);border-radius:2px;padding:24px 22px;border-top:3px solid var(--navy-mid);">
+        <p style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--navy-mid);margin-bottom:8px;">Academic Credentials</p>
+        <p style="font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--navy);margin-bottom:8px;line-height:1.2;">B.S. Digital Marketing + M.S. Cybersecurity</p>
+        <p style="font-size:12.5px;line-height:1.65;color:var(--muted);">Graduate credentials spanning enrollment marketing strategy, instructional design, and regulated content environments &mdash; the academic foundation that makes Zarrin&apos;s approach to higher education production substantively different.</p>
+      </div>
+    </div>
+    <div class="edu-cols">
+      <div class="edu-dark">
+        <div class="edu-num">1,000+</div>
+        <p class="edu-cap">Videos produced across education, instructional content, and regulated industries &mdash; with learning objectives built into every script</p>
+        <ul class="edu-bullets">
+          <li class="edu-li"><span class="edu-dot"></span><p><strong>Post-Secondary Teaching Experience:</strong> The agency principal taught at university level. This is not borrowed from market research &mdash; it comes from inside the classroom.</p></li>
+          <li class="edu-li"><span class="edu-dot"></span><p><strong>Instructional Video Architecture:</strong> Every education video is structured around defined communication objectives. The script serves those objectives, not the other way around.</p></li>
+          <li class="edu-li"><span class="edu-dot"></span><p><strong>Institutional Review Fluency:</strong> Zarrin&apos;s production workflow accommodates the internal review cycles, brand approval protocols, and stakeholder sign-off processes that govern content in academic settings.</p></li>
+          <li class="edu-li"><span class="edu-dot"></span><p><strong>Student-Submitted Content Editing:</strong> For student-generated and faculty-contributed footage, Zarrin provides professional editing and post-production that preserves authentic voice while delivering broadcast-quality results.</p></li>
+          <li class="edu-li"><span class="edu-dot"></span><p><strong>The VTSU Merger Context:</strong> Building brand equity for a university formed from three institutions means acknowledging legacy while building something genuinely new. That is a narrative strategy challenge, and Zarrin approaches it as one.</p></li>
+        </ul>
+      </div><!-- /edu-dark -->
+      <div>
+        <p class="lead" style="margin-bottom:24px;">Most production agencies approach a university video brief the same way they approach a hotel rebrand. Zarrin does not. The psychology of an enrollment decision is fundamentally different from any other choice, and the content that supports it has to reflect that difference.</p>
+        <div class="edu-right">
+          <div class="edu-pt"><p class="edu-pt-t">Enrollment Marketing Requires Different Thinking</p><p class="edu-pt-b">A prospective student watching a program video is not looking for features. They are looking for evidence that this place is for someone like them. Zarrin scripts and edits with that specific psychological reality in mind &mdash; not as a stylistic choice, but as a strategic discipline informed by real academic experience.</p></div>
+          <div class="edu-pt"><p class="edu-pt-t">Program Video Is Not Brand Video</p><p class="edu-pt-b">Program-specific awareness content serves a different function than institutional storytelling. It speaks to a student already aware of VTSU who is now evaluating fit. Zarrin produces both as distinct categories with distinct narrative strategies &mdash; not as variations on the same template.</p></div>
+          <div class="edu-pt"><p class="edu-pt-t">Collaboration With VTSU&apos;s Marketing Team</p><p class="edu-pt-b">Zarrin&apos;s workflow is built for institutional collaboration. Brand guidelines are followed precisely. Internal review cycles are built into every schedule. VTSU&apos;s Marketing and Communications team has full input and visibility at every production stage, not just at final delivery.</p></div>
+          <div class="edu-pt"><p class="edu-pt-t">Scalable Across All Six Campuses</p><p class="edu-pt-b">Campus-specific content that honors local identity while contributing to a coherent VTSU narrative is the creative challenge at the heart of this engagement. Zarrin produces both levels of content from the same strategic framework, with a unified visual voice across every campus.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY ZARRIN -->
+<section id="why" class="section">
+  <div class="inner">
+    <p class="eyebrow">Why Zarrin Productions</p>
+    <h2 class="h2">Six things the Evaluation Committee<br><em>will not find in another proposal</em></h2>
+    <div class="rule"></div>
+    <div class="diff-grid">
+      <div class="diff-item"><div class="diff-n">01</div><p class="diff-title">A Former University Instructor Leads the Engagement</p><p class="diff-body">This is not an analogy. The person leading VTSU&apos;s production engagement has taught at the post-secondary level. That credential changes the quality of every enrollment script, every program explainer, and every strategic recommendation about how the content should work.</p></div>
+      <div class="diff-item"><div class="diff-n">02</div><p class="diff-title">Integrated Production &mdash; One Brief, Full Library</p><p class="diff-body">Every production cycle at Zarrin generates a complete asset library from a single creative engagement. One campaign brief produces the anchor film, social cutdowns at every required duration, paid ad creative variants, and platform-specific versions. VTSU does not commission a separate production for each channel or format.</p></div>
+      <div class="diff-item"><div class="diff-n">03</div><p class="diff-title">100+ In-House Professionals &mdash; Immediate Capacity</p><p class="diff-body">The agency staffing Zarrin brings to this engagement is not assembled on contract award. It exists right now. Creative directors, editors, motion designers, digital strategists, and campaign managers are active, available, and ready to begin within one week of contract signing.</p></div>
+      <div class="diff-item"><div class="diff-n">04</div><p class="diff-title">Attention as a Production Discipline</p><p class="diff-body">Hook structure, visual pacing, message sequencing, and call-to-action placement are engineered into every script and every edit from the first cut. Not left to creative preference. Not applied at the end. Built in from the beginning of every production.</p></div>
+      <div class="diff-item"><div class="diff-n">05</div><p class="diff-title">Performance-Connected Production</p><p class="diff-body">Zarrin tracks deployed content and uses that data to improve subsequent production cycles. In a two-year engagement, Year 2 content is meaningfully better-informed than Year 1 because the feedback loop between production and performance is built into the engagement structure from day one.</p></div>
+      <div class="diff-item"><div class="diff-n">06</div><p class="diff-title">Zarrin Works Differently From Most Agencies</p><p class="diff-body">VTSU&apos;s team collaborates directly with the strategic and creative leads responsible for shaping the work &mdash; not an account manager who relays notes to a production team they have never met. Most large agencies operate with multiple layers between the client and the people doing the creative work. At Zarrin, there are none. The person who develops the strategy is the same person who oversees the production and signs off on the final delivery.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY UNIVERSITIES -->
+<section id="why-universities" class="section-alt">
+  <div class="inner">
+    <p class="eyebrow">Why Institutions Choose Zarrin Productions</p>
+    <h2 class="h2">This is not a category most<br><em>agencies can compete in</em></h2>
+    <div class="rule"></div>
+    <p class="lead" style="margin-bottom:36px;">Universities today compete in a crowded digital landscape where prospective students encounter hundreds of messages before making a single enrollment decision. Video storytelling has become one of the most powerful tools for communicating institutional mission, showcasing authentic student experience, and translating academic opportunity into something that actually moves people. Most production vendors can make a good-looking video. Very few can build a content system that serves enrollment strategy over two years. Zarrin is one of them.</p>
+    <div class="wu-grid">
+      <div class="wu-item">
+        <div class="wu-n">01 &mdash; Education Expertise</div>
+        <div class="wu-title">Educational Communication, Not Just Video Production</div>
+        <div class="wu-body">With a background in higher education instruction, Zarrin understands how information must be structured to hold attention, maintain comprehension, and drive a decision. That is not a transferable skill from commercial production work. It comes from standing in front of students, understanding how they absorb content, and building communication that respects their intelligence while earning their trust. Every VTSU asset benefits from that foundation.</div>
+      </div>
+      <div class="wu-item">
+        <div class="wu-n">02 &mdash; Strategy Plus Execution</div>
+        <div class="wu-title">Enrollment Marketing Strategy Meets Production Capability</div>
+        <div class="wu-body">Rather than producing isolated videos, Zarrin builds integrated content systems where enrollment campaigns, brand storytelling, and program awareness content work together as a coordinated strategy. The creative and the strategic are developed by the same team, which means the work is always in service of the objective. That alignment is precisely what the RFP&apos;s integrated campaign requirement is asking for.</div>
+      </div>
+      <div class="wu-item">
+        <div class="wu-n">03 &mdash; The Right Scale</div>
+        <div class="wu-title">Scalable Production Without Being the Smallest Account in the Room</div>
+        <div class="wu-body">Institutions routinely worry about two things: vendors too small to handle the scope, and large agencies where the university becomes a minor account. Zarrin is built for the middle &mdash; a professional full-service agency with genuine production scale where a two-year institutional partnership is a priority engagement, not a rounding error on the revenue sheet. VTSU will be treated like the flagship account it is.</div>
+      </div>
+    </div>
+    <div class="wu-landscape">
+      <p>The institutions that win in the current enrollment environment show up in the right channels with content that feels genuine, specific, and worth watching. Generic institutional video no longer holds attention long enough to change a decision. <strong>Zarrin is built to produce the kind of content that actually does &mdash; in the formats, volumes, and strategic frameworks that a two-year enrollment initiative demands.</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- COMPETITIVE POSITIONING -->
+<section class="section-white" id="competitive" style="padding-bottom:48px;">
+  <div class="inner">
+    <p class="eyebrow">Zarrin&apos;s Position in the Market</p>
+    <h2 class="h2">Where Zarrin sits in relation<br><em>to every other type of vendor</em></h2>
+    <div class="rule"></div>
+    <table class="comp-table" style="margin-top:48px;">
+      <thead>
+        <tr>
+          <th>Vendor Type</th>
+          <th>Their Strengths</th>
+          <th>Their Weakness for This RFP</th>
+          <th>Zarrin&apos;s Advantage</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Large Agency (20–80 staff)</td>
+          <td>Institutional credibility, large portfolio, polished branding</td>
+          <td>Expensive, slow production cycles, VTSU becomes a small account with limited senior attention</td>
+          <td>Direct founder-led engagement. Faster cycles. VTSU receives senior creative attention on every deliverable, not junior account management.</td>
+        </tr>
+        <tr>
+          <td>Local Production Company</td>
+          <td>Filming expertise, strong cinematography, local presence</td>
+          <td>Weak marketing strategy. Videos that look good but do not support enrollment goals or campaign architecture.</td>
+          <td>Strategy precedes production at Zarrin. Every asset is built around a communication objective &mdash; not just framed and shot.</td>
+        </tr>
+        <tr>
+          <td>Higher-Ed Specialist Agency</td>
+          <td>Deep enrollment marketing knowledge, institutional credibility</td>
+          <td>Often expensive with dated creative styles and slow output. Less fluency with modern digital-first formats.</td>
+          <td>Zarrin brings institutional understanding with modern production capability &mdash; content that resonates with today&apos;s digitally native prospective students.</td>
+        </tr>
+        <tr>
+          <td>Freelance Collectives</td>
+          <td>Low price, creative flexibility</td>
+          <td>Capacity concerns, reliability risk, limited infrastructure for a two-year multi-campus engagement</td>
+          <td>A structured agency with documented production workflows, dedicated project management, and scalable capacity. Not assembled on a per-project basis.</td>
+        </tr>
+        <tr>
+          <td>Video Platform / Automation Tools</td>
+          <td>Speed, low cost, automation</td>
+          <td>Generic output with no institutional nuance. Template-based content cannot carry the narrative weight of enrollment storytelling.</td>
+          <td>Technology-enabled but human-led. Zarrin uses modern production tools to accelerate output without sacrificing the strategic direction and storytelling judgment that institutional content requires.</td>
+        </tr>
+        <tr class="comp-highlight">
+          <td><span class="comp-zarrin-label">&#9733; Zarrin</span></td>
+          <td>Strategic storytelling + production capability + education background</td>
+          <td style="color:var(--green);">The positioning that wins: boutique agency precision with full-agency scale</td>
+          <td style="color:var(--navy);font-weight:600;">Modern. Institutional. Founder-led. Campaign-capable. Built for exactly this engagement.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- WORKFLOW -->
+<section class="section-white" id="workflow">
+  <div class="inner">
+    <p class="eyebrow">Production Workflow &mdash; Collaborative Process</p> &mdash; Collaborative Process</p>
+    <h2 class="h2">Five phases. Full transparency.<br><em>Nothing advances without approval.</em></h2>
+    <div class="rule"></div>
+    <p class="lead" style="margin-bottom:0;">Every engagement follows a documented production process. VTSU&apos;s Marketing and Communications team has a defined input point at each phase, and no stage proceeds without prior client sign-off.</p>
+    <div class="wf-steps">
+      <div class="wf-step"><div class="wf-c"><span class="wf-num">1</span></div><p class="wf-name">Discovery</p><p class="wf-body">A structured working session with VTSU&apos;s team. Goals, audience profiles, brand guidelines, content priorities by campus and program, and performance expectations are documented and agreed upon. This session produces the brief that governs the full engagement.</p></div>
+      <div class="wf-step"><div class="wf-c"><span class="wf-num">2</span></div><p class="wf-name">Strategy and Concepting</p><p class="wf-body">Production roadmap, messaging architecture, content calendar, and per-format strategy developed by Zarrin and reviewed by VTSU. The strategy is a working document &mdash; it governs production decisions at every stage and is updated as the engagement evolves.</p></div>
+      <div class="wf-step"><div class="wf-c"><span class="wf-num">3</span></div><p class="wf-name">Pre-Production and Production</p><p class="wf-body">Scripts, shot plans, scheduling, contributor coordination, and all pre-production logistics completed and approved. Production is then executed &mdash; remote, hybrid, or via coordinated content capture &mdash; with creative direction centralized in the Zarrin team.</p></div>
+      <div class="wf-step"><div class="wf-c"><span class="wf-num">4</span></div><p class="wf-name">Post and Review</p><p class="wf-body">Editing, color, sound, motion, and finishing. VTSU reviews polished cuts at every stage &mdash; not rough assemblies. Two structured revision rounds are included per asset. Revision scope and turnaround times are agreed upon at engagement start.</p></div>
+      <div class="wf-step"><div class="wf-c"><span class="wf-num">5</span></div><p class="wf-name">Delivery and Performance</p><p class="wf-body">Final delivery in all formats with a complete delivery manifest. For retained engagements, content performance is tracked and reviewed with VTSU&apos;s team, and each production cycle is informed by data from the previous one.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 90 DAY ROADMAP -->
+<section id="ninety" class="section-alt">
+  <div class="inner">
+    <p class="eyebrow">Partnership Roadmap &mdash; First 90 Days</p>
+    <h2 class="h2">Zarrin is already thinking<br><em>about how to start</em></h2>
+    <div class="rule"></div>
+    <p class="lead" style="margin-bottom:0;">The most common failure mode in agency engagements is the gap between contract signing and meaningful output. A vendor wins, then spends the first month asking questions they should have answered before submitting the proposal. What follows is exactly what the first 90 days of the VTSU engagement looks like &mdash; operationally, not aspirationally.</p>
+    <div class="roadmap-grid">
+      <div class="rm-month">
+        <div class="rm-head">
+          <div class="rm-month-label">Month 01 &mdash; May 2026</div>
+          <div class="rm-month-title">Strategic Alignment</div>
+          <div class="rm-month-sub">Foundation, frameworks, and the brief that governs everything that follows</div>
+        </div>
+        <div class="rm-body">
+          <ul class="rm-items">
+            <li class="rm-item"><span class="rm-dot"></span><div><strong>Discovery Workshops with VTSU&apos;s Team</strong>Sessions with Marketing, Communications, and Enrollment leadership to document goals, existing assets, brand priorities, and the campus-specific content hierarchy across all six locations.</div></li>
+            <li class="rm-item"><span class="rm-dot"></span><div><strong>Brand Asset and Content Audit</strong>Review of existing VTSU video assets, photography, brand guidelines, and campaign materials. Identify what can be repurposed and what requires new production to fill strategic gaps.</div></li>
+            <li class="rm-item"><span class="rm-dot"></span><div><strong>Audience and Enrollment Mapping</strong>Deep dive into VTSU&apos;s enrollment funnel &mdash; which programs need the most awareness support, which campuses have the strongest visual story to tell, and which prospective student audiences are being underserved by current content.</div></li>
+            <li class="rm-item"><span class="rm-dot"></span><div><strong>Two-Year Content Framework Development</strong>Production of the strategic document that governs all content decisions for the full engagement: content pillars, priority cadence, platform strategy, and success metrics aligned to VTSU&apos;s enrollment targets.</div></li>
+          </ul>
+          <div class="rm-note">Deliverable: Approved two-year content strategy and production roadmap. VTSU&apos;s Marketing team reviews and approves before any content enters production.</div>
+        </div>
+      </div>
+      <div class="rm-month">
+        <div class="rm-head">
+          <div class="rm-month-label">Month 02 &mdash; June 2026</div>
+          <div class="rm-month-title">Story Development</div>
+          <div class="rm-month-sub">Scripts, concepts, and the creative foundations for the first production cycle</div>
+        </div>
+        <div class="rm-body">
+          <ul class="rm-items">
+            <li class="rm-item"><span class="rm-dot"></span><div><strong>Hero Narrative Concepting</strong>Development of the institutional hero video treatment &mdash; the anchor piece for VTSU&apos;s unified brand identity. Creative brief, narrative arc, visual approach, and tone reviewed and approved by VTSU&apos;s team before scripting begins.</div></li>
+            <li class="rm-item"><span class="rm-dot"></span><div><strong>Program Spotlight Scripting</strong>Scripts for the first set of program awareness videos, developed with input from VTSU&apos;s enrollment and academic affairs teams. Each script maps to the specific enrollment objective for that program audience.</div></li>
+            <li class="rm-item"><span class="rm-dot"></span><div><strong>Social Content Framework and Calendar</strong>Platform-native content strategy developed for Instagram, LinkedIn, TikTok, and YouTube &mdash; with the first 30-day content calendar built and ready for production scheduling.</div></li>
+            <li class="rm-item"><span class="rm-dot"></span><div><strong>Production Scheduling and Contributor Coordination</strong>All pre-production logistics finalized: schedules, contributor briefings for student and faculty participants, and remote production coordination arrangements confirmed across all relevant campuses.</div></li>
+          </ul>
+          <div class="rm-note">Deliverable: Approved scripts, visual concepts, and production schedules. Nothing enters production without VTSU&apos;s sign-off on every creative brief.</div>
+        </div>
+      </div>
+      <div class="rm-month">
+        <div class="rm-head">
+          <div class="rm-month-label">Month 03 &mdash; July 2026</div>
+          <div class="rm-month-title">Production and Deployment</div>
+          <div class="rm-month-sub">First assets delivered and the campaign infrastructure ready for Fall 2026 launch</div>
+        </div>
+        <div class="rm-body">
+          <ul class="rm-items">
+            <li class="rm-item"><span class="rm-dot"></span><div><strong>Primary Campaign Video Production</strong>Institutional hero video, first two program spotlight videos, and the opening set of short-form social content produced, edited, and delivered for VTSU&apos;s review. All formats and aspect ratios included per asset.</div></li>
+            <li class="rm-item"><span class="rm-dot"></span><div><strong>Paid Ad Creative Suite</strong>Enrollment campaign ad creatives for Meta and Google, built from the approved hero video and program content. Delivered in all required ad formats and durations, ready for direct deployment into VTSU&apos;s ad accounts.</div></li>
+            <li class="rm-item"><span class="rm-dot"></span><div><strong>Social Cutdowns and Platform Variants</strong>Full suite of social cutdowns from every primary asset produced. 15s, 30s, and 60s versions across all platform formats &mdash; so VTSU enters Fall 2026 with a complete content library, not a single hero film.</div></li>
+            <li class="rm-item"><span class="rm-dot"></span><div><strong>Campaign Infrastructure and Tracking Setup</strong>Paid campaign infrastructure configured, pixels and attribution established, and performance tracking implemented. All systems ready for the Fall 2026 enrollment campaign launch.</div></li>
+          </ul>
+          <div class="rm-note">Deliverable: Complete first-cycle asset library plus live campaign infrastructure. VTSU enters Fall 2026 enrollment season with a fully operational content and campaign system.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WORK SAMPLES -->
+<section id="samples" class="samples-dark">
+  <div style="max-width:1160px;margin:0 auto;">
+    <div class="samples-intro">
+      <p class="eyebrow eyebrow-light" style="justify-content:center;">Production Work Samples</p>
+      <h2 class="h2-light" style="text-align:center;max-width:580px;margin:0 auto 14px;">The work speaks.<br><em>We let it.</em></h2>
+      <div class="rule-c"></div>
+      <p style="font-size:15px;color:rgba(255,255,255,.42);line-height:1.8;">A cross-section of Zarrin&apos;s production range &mdash; from educational instructional content to brand films and performance ad creative. These are delivered assets from real engagements, not showreel composites.</p>
+    </div>
+
+    <div class="samples-grid">
+      <div class="sample-card">
+        <iframe class="sample-video" src="https://drive.google.com/file/d/13mxB8xcU-9rNvXfVn_l6cnBOrmltbmDx/preview" allow="autoplay" allowfullscreen></iframe>
+        <div class="sample-meta"><div class="sample-type">Educational Content Sample</div><div class="sample-title">Corporate Education and Instructional Video</div><div class="sample-desc">Demonstrates Zarrin&apos;s instructional video approach: clear learning objectives, structured pacing, and content that communicates without overwhelming. Directly applicable to VTSU&apos;s program awareness and educational content needs.</div></div>
+      </div>
+      <div class="sample-card">
+        <iframe class="sample-video" src="https://drive.google.com/file/d/1f4ha_-2zLgmiOm1DIrxg4wetct-QOrNx/preview" allow="autoplay" allowfullscreen></iframe>
+        <div class="sample-meta"><div class="sample-type">Hero Video &mdash; Sample 1</div><div class="sample-title">Brand and Narrative Storytelling</div><div class="sample-desc">A full-production hero video demonstrating Zarrin&apos;s brand storytelling capability &mdash; narrative arc, visual pacing, and the emotional pull that makes institutional content worth watching to the end.</div></div>
+      </div>
+      <div class="sample-card">
+        <iframe class="sample-video" src="https://drive.google.com/file/d/1DMMHJruwF2LoJ_hF2AGhKq3dkxYiK-60/preview" allow="autoplay" allowfullscreen></iframe>
+        <div class="sample-meta"><div class="sample-type">Hero Video &mdash; Sample 2</div><div class="sample-title">Campaign Anchor and Institutional Film</div><div class="sample-desc">A second hero format showing how Zarrin approaches institutional film differently across briefs &mdash; same production discipline, different tone, audience, and narrative strategy. Versatility without inconsistency.</div></div>
+      </div>
+      <div class="sample-card">
+        <iframe class="sample-video" src="https://drive.google.com/file/d/13Mk-cpiVoLYOK3coLYGhzQ5G6zJmIrEK/preview" allow="autoplay" allowfullscreen></iframe>
+        <div class="sample-meta"><div class="sample-type">Meta Ad Creative Sample</div><div class="sample-title">Performance Campaign Video</div><div class="sample-desc">Paid ad creative demonstrating hook architecture, platform-native pacing, and conversion-focused messaging. This format is the basis for VTSU&apos;s enrollment campaign ads &mdash; designed to stop the scroll and move a prospective student toward action.</div></div>
+      </div>
+    </div>
+
+    <div class="samples-cta-wrap">
+      <a href="https://drive.google.com/drive/folders/1mkhQI1gUk2WWmWRI4kPdDm5c3yroEWtZ?usp=sharing" target="_blank">View more portfolio samples &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- PACKAGES -->
+<section id="packages" class="section">
+  <div class="inner">
+    <div style="background:var(--gold-pale);border:1px solid var(--gold-border);border-radius:3px;padding:20px 28px;margin-bottom:48px;display:flex;align-items:center;gap:16px;">
+      <span style="font-size:22px;flex-shrink:0;">&#128197;</span>
+      <p style="font-size:14px;line-height:1.75;color:#7a5e00;"><strong style="color:var(--navy);">Ready to begin within one week of contract signing.</strong> Zarrin builds in time for internal team preparation and production resource allocation before the formal planning phase opens in May 2026. There is no ramp period and no gap between award and output.</p>
+    </div>
+    <p class="eyebrow">Section 4 &mdash; Service Packages</p>
+    <h2 class="h2">Four tiers built for different<br><em>scales of enrollment ambition</em></h2>
+    <div class="rule"></div>
+    <p class="lead" style="margin-bottom:48px;">Every tier is configured for VTSU&apos;s specific needs: enrollment video, program awareness, brand storytelling, social content, and paid campaign creative. Each package includes strategy, scripting, production, post-production, and delivery. Ad spend goes directly to platforms and is not included in any Zarrin fee.</p>
+
+    <div class="pkgs">
+      <!-- T1 -->
+      <div class="pkg">
+        <div class="pkg-head h-t1">
+          <div class="pkg-tier">Tier 01 &mdash; Foundation</div>
+          <div class="pkg-name">Launch Ready</div>
+          <div class="pkg-line">Consistent, high-quality video presence across VTSU&apos;s primary digital channels &mdash; the foundation of enrollment momentum.</div>
+          <div class="pkg-price-row"><span class="pkg-cur">$</span><span class="pkg-price">15,000</span><span class="pkg-per">/month</span></div>
+        </div>
+        <div class="pkg-body">
+          <div class="pkg-st">Video Production</div>
+          <ul class="pkg-items">
+            <li class="pi bold">6 short-form enrollment and social videos per month</li>
+            <li class="pi">Instagram Reels, TikTok, YouTube Shorts, LinkedIn</li>
+            <li class="pi">2 program awareness or enrollment ad videos per month</li>
+            <li class="pi">3 Meta ad creatives per month</li>
+            <li class="pi">Full scripting, editing, captions, and sound design on every asset</li>
+          </ul>
+          <div class="pkg-st">Campaign and Social</div>
+          <ul class="pkg-items">
+            <li class="pi bold">2 platforms managed (e.g. Instagram + LinkedIn)</li>
+            <li class="pi">Monthly content calendar aligned to VTSU&apos;s admissions calendar</li>
+            <li class="pi">Meta Ads Phase 1 &mdash; prospecting and enrollment targeting</li>
+            <li class="pi">Pixel, events, and attribution setup</li>
+            <li class="pi">2 ad creative variants with A/B testing</li>
+            <li class="pi note">Ad spend not included</li>
+          </ul>
+          <div class="pkg-st">Reporting and Standards</div>
+          <ul class="pkg-items">
+            <li class="pi">Monthly performance review and content analysis</li>
+            <li class="pi">Caption and accessibility files on all assets</li>
+            <li class="pi">Dedicated project management, direct communication</li>
+          </ul>
+          <p class="pkg-note">Three-month minimum. The right starting point for VTSU to establish a consistent video presence and validate content direction before scaling.</p>
+        </div>
+      </div>
+
+      <!-- T2 -->
+      <div class="pkg">
+        <div class="pkg-head h-t2">
+          <div class="pkg-tier">Tier 02 &mdash; Growth</div>
+          <div class="pkg-name">Market Momentum</div>
+          <div class="pkg-line">A full-channel enrollment engine &mdash; more content, more channels, and a paid campaign operation that actively drives applications.</div>
+          <div class="pkg-price-row"><span class="pkg-cur">$</span><span class="pkg-price">19,500</span><span class="pkg-per">/month</span></div>
+        </div>
+        <div class="pkg-body">
+          <div class="pkg-st">Video Production</div>
+          <ul class="pkg-items">
+            <li class="pi bold">10 short-form social videos per month</li>
+            <li class="pi">4 enrollment and program ad creatives per month</li>
+            <li class="pi">1 program spotlight video per month</li>
+            <li class="pi">Full integrated cutdown suite per hero asset produced</li>
+            <li class="pi">All formats, all durations, all platforms &mdash; per asset</li>
+          </ul>
+          <div class="pkg-st">Campaign and Social</div>
+          <ul class="pkg-items">
+            <li class="pi bold">3 platforms fully managed</li>
+            <li class="pi">Meta + Google Search and Performance Max</li>
+            <li class="pi">4 active ad concepts with ongoing A/B testing</li>
+            <li class="pi">Retargeting infrastructure for prospective students</li>
+            <li class="pi">Bi-weekly campaign performance reviews</li>
+            <li class="pi note">Ad spend not included</li>
+          </ul>
+          <div class="pkg-st">Strategy and Reporting</div>
+          <ul class="pkg-items">
+            <li class="pi">Full content strategy aligned to enrollment cycle</li>
+            <li class="pi">Monthly deep-dive analytics report</li>
+            <li class="pi">Conversion optimization recommendations each cycle</li>
+          </ul>
+          <p class="pkg-note">Three-month minimum. For VTSU ready to build a content operation that actively contributes to enrollment targets.</p>
+        </div>
+      </div>
+
+      <!-- T3 SCALE -->
+      <div class="pkg feat">
+        <div class="pkg-head h-t3">
+          <div class="feat-badge">Most Popular</div>
+          <div class="pkg-tier">Tier 03 &mdash; Scale</div>
+          <div class="pkg-name">Total Dominance</div>
+          <div class="pkg-line">The complete VTSU content operation &mdash; every channel, every campus, every enrollment touchpoint, running simultaneously under one agency.</div>
+          <div class="pkg-price-row"><span class="pkg-cur">$</span><span class="pkg-price">25,000</span><span class="pkg-per">/month</span></div>
+        </div>
+        <div class="pkg-body">
+          <div class="scale-bar">Everything in Growth &mdash; plus the depth, volume, and strategic horsepower that makes VTSU the most visible higher education brand in the region.</div>
+          <div class="pkg-st">Video Production</div>
+          <ul class="pkg-items">
+            <li class="pi bold">16 short-form social videos per month</li>
+            <li class="pi bold">8 enrollment and program ad creatives per month</li>
+            <li class="pi bold">2 program spotlight or hero brand videos per month</li>
+            <li class="pi bold">1 long-form institutional brand film per quarter</li>
+            <li class="pi">Full integrated cutdown and social suite from every hero</li>
+            <li class="pi">Student-submitted and faculty content editing &mdash; unlimited</li>
+            <li class="pi">All formats, all durations, all platforms on every asset</li>
+          </ul>
+          <div class="pkg-st">Campaign and Social &mdash; All Channels</div>
+          <ul class="pkg-items">
+            <li class="pi bold">All active platforms managed: Instagram, TikTok, LinkedIn, YouTube, Facebook</li>
+            <li class="pi bold">Meta + Google + YouTube full-channel paid management</li>
+            <li class="pi">Unlimited active ad concepts and creative testing</li>
+            <li class="pi">Full enrollment funnel: awareness &rarr; consideration &rarr; application</li>
+            <li class="pi">Prospective student retargeting across all channels</li>
+            <li class="pi">Weekly campaign optimisation and scaling reviews</li>
+            <li class="pi note">Ad spend not included</li>
+          </ul>
+          <div class="pkg-st">Animated and Motion Content</div>
+          <ul class="pkg-items">
+            <li class="pi bold">2 animated program explainers per month</li>
+            <li class="pi">Campus-specific motion identity assets</li>
+          </ul>
+          <div class="pkg-st">Existing Content Repurposing</div>
+          <ul class="pkg-items">
+            <li class="pi bold">Monthly batch from VTSU&apos;s existing footage and archives</li>
+            <li class="pi">Events, campus footage, lectures &mdash; transformed into deployable assets</li>
+          </ul>
+          <div class="pkg-st">Strategy and Reporting</div>
+          <ul class="pkg-items">
+            <li class="pi bold">Monthly full-day strategy session with VTSU&apos;s Marketing team</li>
+            <li class="pi">Weekly dashboards and bi-weekly review calls</li>
+            <li class="pi">Quarterly content and campaign audit with forward planning</li>
+            <li class="pi">Landing page and campaign infrastructure management</li>
+          </ul>
+          <p class="pkg-note">Three-month minimum. The most comprehensive institutional content partnership available &mdash; built for organizations that want production and strategy fully handled.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- EMPIRE -->
+    <div class="empire">
+      <div class="empire-head">
+        <div class="emp-left">
+          <div class="emp-badge">&#9733; The Ultimate Package</div>
+          <div class="emp-name">The <em>Empire</em> Package</div>
+          <div class="emp-tagline">This is not a marketing retainer. This is handing over the entire growth operation and watching it run at full capacity &mdash; every channel, every platform, every day. A dedicated team of eight specialists assigned exclusively to VTSU&apos;s brand, not shared with other clients.</div>
+        </div>
+        <div class="emp-right">
+          <div class="emp-pl">Monthly Investment</div>
+          <div class="emp-price">$35,000</div>
+          <span class="emp-period">/month</span>
+        </div>
+      </div>
+      <div class="empire-body">
+        <div class="emp-grid">
+          <div>
+            <div class="emp-ct">Video and Creative Production</div>
+            <ul class="emp-items">
+              <li class="ei bold">24 short-form videos per month</li>
+              <li class="ei">All platforms, all formats, all durations</li>
+              <li class="ei">15 enrollment and program ad creatives per month</li>
+              <li class="ei bold">Monthly long-form brand or institutional film</li>
+              <li class="ei">Student and faculty content editing &mdash; unlimited</li>
+              <li class="ei">Video Business Card quarterly</li>
+              <li class="ei">FAQ and explainer video library build-out</li>
+              <li class="ei">Full graphics design across all assets</li>
+            </ul>
+            <div class="emp-ct" style="margin-top:28px;">Platform and Web</div>
+            <ul class="emp-items">
+              <li class="ei bold">Full GoHighLevel CRM, funnels, and automations</li>
+              <li class="ei">Custom AI chatbots and Conversation AI</li>
+              <li class="ei">Shopify Plus, Webflow, GHL, Kajabi, WordPress</li>
+              <li class="ei">Passion.io program app setup and management</li>
+              <li class="ei">Unlimited website development and revisions</li>
+            </ul>
+          </div>
+          <div>
+            <div class="emp-ct">Social Media Management</div>
+            <ul class="emp-items">
+              <li class="ei bold">30 static creatives per month</li>
+              <li class="ei">All platforms managed, unlimited</li>
+              <li class="ei">Full community management and DMs</li>
+              <li class="ei">Campaign launches and content drops</li>
+              <li class="ei">Influencer outreach and coordination</li>
+            </ul>
+            <div class="emp-ct" style="margin-top:28px;">SEO and Digital Authority</div>
+            <ul class="emp-items">
+              <li class="ei bold">Full technical, on-page and off-page SEO</li>
+              <li class="ei">Aggressive backlink campaign &mdash; 15 per month</li>
+              <li class="ei bold">6 SEO articles per month</li>
+              <li class="ei">Google Business Profile management</li>
+            </ul>
+          </div>
+          <div>
+            <div class="emp-ct">Paid Advertising &mdash; Full Stack</div>
+            <ul class="emp-items">
+              <li class="ei bold">Meta, Google, YouTube, and TikTok</li>
+              <li class="ei">Unlimited active ad concepts and testing</li>
+              <li class="ei">Full enrollment funnel management</li>
+              <li class="ei">Weekly optimisation calls</li>
+              <li class="ei note">Ad spend not included</li>
+            </ul>
+            <div class="emp-ct" style="margin-top:28px;">Strategy and Consulting</div>
+            <ul class="emp-items">
+              <li class="ei bold">Dedicated senior strategist assigned exclusively</li>
+              <li class="ei">Monthly full-day strategy session</li>
+              <li class="ei">Weekly optimisation and scaling reviews</li>
+              <li class="ei">Quarterly brand and campaign audit</li>
+              <li class="ei">Cold email and LinkedIn outreach automation</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEE PROPOSAL -->
+<section id="pricing" class="section-alt">
+  <div class="inner">
+    <p class="eyebrow">Section 4 Continued &mdash; Fee Proposal: Per-Unit Pricing</p>
+    <h2 class="h2">Definitive pricing.<br><em>No ranges. No surprises.</em></h2>
+    <div class="rule"></div>
+    <p class="lead" style="margin-bottom:44px;">Every price below is a fixed unit rate. Volume discounts are available for engagements exceeding 50 assets in a single production series. All prices are in USD. Ad spend budgets are separate and go directly to platforms.</p>
+
+    <p style="font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;">Per-Unit Video and Content Pricing</p>
+    <table class="pt">
+      <thead><tr><th>Asset Type</th><th>Description</th><th>Formats Delivered</th><th>Available In</th><th>Unit Price</th></tr></thead>
+      <tbody>
+        <tr><td>Hero Brand / Institutional Film</td><td>Full-production institutional narrative or campaign anchor film, scripted and produced by Zarrin</td><td>16:9 HD or 4K, 60s&ndash;3min</td><td><span class="bdg bdg-t3">Growth, Scale, Empire</span></td><td>$5,000</td></tr>
+        <tr><td>Enrollment and Program Awareness Video</td><td>Program-specific video designed to communicate program value to prospective students making enrollment decisions</td><td>16:9 primary + 9:16 cutdown included</td><td><span class="bdg bdg-g">All Packages</span></td><td>$5,000</td></tr>
+        <tr><td>Short-Form Social Video</td><td>Platform-native short content for Instagram, TikTok, LinkedIn, and YouTube Shorts &mdash; scripted, edited, captioned</td><td>9:16, 1:1, 16:9 as required</td><td><span class="bdg bdg-g">All Packages</span></td><td>$300</td></tr>
+        <tr><td>Paid Ad Creative (Video)</td><td>Enrollment campaign ad video with hook architecture, program proof, and CTA. Ready for direct deployment</td><td>16:9 and 9:16, 15s and 30s</td><td><span class="bdg bdg-t3">Growth, Scale, Empire</span></td><td>$500</td></tr>
+        <tr><td>Student / Faculty Content Editing</td><td>Professional post-production on student-submitted or faculty-contributed footage &mdash; delivered as broadcast-quality assets</td><td>All required formats</td><td><span class="bdg bdg-t3">Scale, Empire</span></td><td>$150 per asset</td></tr>
+        <tr><td>FAQ / Program Explainer Video</td><td>Structured explainer addressing common prospective student questions about a specific program or process</td><td>16:9 HD</td><td><span class="bdg bdg-g">All Packages</span></td><td>$2,000</td></tr>
+        <tr><td>Video Business Card (VBC)</td><td>Professional video introduction for institutional leadership, admissions, or faculty use</td><td>16:9 and 9:16</td><td><span class="bdg bdg-g">All Packages</span></td><td>$5,000</td></tr>
+        <tr><td>Animated / Motion Graphics Video</td><td>Fully animated or motion-led video built to VTSU brand standards &mdash; for program explainers or data storytelling</td><td>16:9 HD, 9:16 as required</td><td><span class="bdg bdg-t3">Growth, Scale, Empire</span></td><td>$2,500</td></tr>
+        <tr><td>Social Cutdown from Existing Hero</td><td>Platform-specific version derived from an existing hero or program video &mdash; all format and duration variants included</td><td>Multiple formats and durations</td><td><span class="bdg bdg-t3">Growth, Scale, Empire</span></td><td>$400</td></tr>
+        <tr><td>Content Repurposing Set</td><td>Existing VTSU footage or archives transformed into a batch of social and campaign-ready clips</td><td>Platform-native per clip</td><td><span class="bdg bdg-t3">Scale, Empire</span></td><td>$800 per batch</td></tr>
+        <tr><td>Static Creative</td><td>On-brand static graphic for social channels, paid ads, or digital communications</td><td>All required dimensions</td><td><span class="bdg bdg-g">All Packages</span></td><td>$50</td></tr>
+      </tbody>
+    </table>
+
+    <p style="font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;margin-top:48px;">Website Builds and Platform Services</p>
+    <table class="pt">
+      <thead><tr><th>Service</th><th>Description</th><th>Platform</th><th>Price</th></tr></thead>
+      <tbody>
+        <tr><td>Website Build &mdash; Launch</td><td>Core site: homepage, program pages, mobile optimisation, analytics and tracking, launch-ready delivery</td><td>Webflow</td><td>$5,000</td></tr>
+        <tr><td>Website Build &mdash; Bundle</td><td>Launch build plus Video Business Card embedded in hero section and FAQ video on FAQ page</td><td>Webflow</td><td>$8,000</td></tr>
+        <tr><td>Website Build &mdash; Full Conversion System</td><td>Unlimited pages, VBC, FAQ video, dedicated paid ad landing page &mdash; the complete digital conversion ecosystem</td><td>Webflow + integrations</td><td>$10,000</td></tr>
+      </tbody>
+    </table>
+
+    <p style="font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;margin-top:48px;">Optional Services and Add-Ons</p>
+    <table class="pt">
+      <thead><tr><th>Service</th><th>Description</th><th>Rate</th></tr></thead>
+      <tbody>
+        <tr><td>Accessibility Files</td><td>SRT, VTT, and embedded caption files. Included by default on all Zarrin-produced assets.</td><td>Included on all assets</td></tr>
+        <tr><td>Paid Media Management &mdash; Standalone</td><td>Ad account management without a full retainer. Meta or Google managed as a single-platform service.</td><td>$2,500/month per platform</td></tr>
+        <tr><td>GoHighLevel CRM Setup</td><td>Full platform configuration, pipeline build, email and SMS automation workflows.</td><td>$3,000 one-time</td></tr>
+        <tr><td>Monthly Performance Reporting</td><td>Campaign analytics, content performance review, and strategic recommendations. Included in all retainers.</td><td>Included in retainer</td></tr>
+        <tr><td>Onboarding and Setup</td><td>Brand audit, workflow setup, and engagement kickoff. No onboarding fee at Zarrin.</td><td>No charge</td></tr>
+        <tr><td>Source Files and Archive Delivery</td><td>All project files, source media, and production archives delivered at engagement close for VTSU&apos;s ongoing use.</td><td>Included at close</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ALWAYS INCLUDED -->
+<section class="section-white">
+  <div class="inner">
+    <div class="always-box">
+      <p class="always-title">What Is <em>Always Included</em> &mdash; Across Every Engagement</p>
+      <div class="always-grid">
+        <div class="ai"><div class="ai-icon">&#11088;</div><strong>Brand Consistency</strong><span>Every asset follows VTSU&apos;s visual identity precisely &mdash; typography, colour, tone, and voice &mdash; across all formats, all volumes, all campuses.</span></div>
+        <div class="ai"><div class="ai-icon">&#128202;</div><strong>Monthly Performance Reporting</strong><span>Clear, actionable performance data every month &mdash; what worked, what to iterate, and what it means for the next production cycle.</span></div>
+        <div class="ai"><div class="ai-icon">&#128172;</div><strong>Direct Communication</strong><span>VTSU&apos;s team communicates directly with the people doing the strategic and creative work. No account manager layers.</span></div>
+        <div class="ai"><div class="ai-icon">&#9855;</div><strong>Accessibility Compliance</strong><span>Caption files (SRT and VTT), embedded captions, and accessible design are included on every video as a standard, not an add-on.</span></div>
+        <div class="ai"><div class="ai-icon">&#128274;</div><strong>Full Confidentiality</strong><span>All production staff operate under formal confidentiality agreements. VTSU&apos;s content, strategy materials, and student and faculty assets are fully protected.</span></div>
+        <div class="ai"><div class="ai-icon">&#128193;</div><strong>Complete Asset Documentation</strong><span>Production plans, revision logs, delivery manifests, and full source file archives &mdash; delivered and organized for VTSU&apos;s ongoing reference and internal use.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section">
+  <div class="inner">
+    <div class="cta-wrap">
+      <h2 class="cta-h">Ready to have a real<br><em>conversation?</em></h2>
+      <p class="cta-p">Every engagement starts with a strategy session, not a sales call. We map VTSU&apos;s goals, existing content, campus priorities, and budget constraints &mdash; and come back with a plan that actually reflects what the institution needs. No generic decks. No filler.</p>
+      <a href="https://calendly.com/lucy-zarrinproduction" target="_blank" class="btn-gold">Book a Strategy Call &rarr;</a>
+      <p style="font-size:12px;color:rgba(255,255,255,.28);margin-top:20px;">Or reach us directly: <a href="mailto:lucy@zarrinproduction.com" style="color:var(--gold-l);text-decoration:none;">lucy@zarrinproduction.com</a></p>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div>
+    <div class="f-logo">Zarrin <span>Productions</span></div>
+    <div class="f-tag">Full-Service Video Production and Digital Marketing</div>
+    <p class="f-meta" style="margin-top:12px;">Document 1 of 3 &mdash; Full Capabilities and Fee Proposal</p>
+  </div>
+  <div class="f-info">
+    <p>Submitted to: Vermont State University Evaluation Committee</p>
+    <p>RFP: Strategic Video Production Partner 26&ndash;28</p>
+    <a href="mailto:lucy@zarrinproduction.com">lucy@zarrinproduction.com</a>
+    <p class="f-meta">All retainers monthly &middot; Per-unit pricing available standalone &middot; Ad spend not included &middot; Subject to signed Service Agreement</p>
+  </div>
+</footer>
+
+</body>
+</html>
